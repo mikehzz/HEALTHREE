@@ -1,4 +1,10 @@
-Hello world...!!!!???
-아무거나 쳐봐
-ㅇㅋㅇㅋ
-지원아 돈 보내줘
+public class Hello{
+
+ public static void main(String []args){
+	System.out.println("Hello world");
+	System.out.println("Tell your world");
+	System.out.println("Tell his world");
+	System.out.println("Tell her world");
+ }
+
+}
