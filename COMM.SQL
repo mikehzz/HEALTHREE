@@ -1,0 +1,64 @@
+DROP INDEX PK_COMM;
+
+/* 댓글 */
+DROP TABLE COMM 
+	CASCADE CONSTRAINTS;
+
+/* 댓글 */
+CREATE TABLE COMM (
+	c_id CHAR(43 BYTE) NOT NULL, /* 댓글ID */
+	m_id VARCHAR2(20) NOT NULL, /* 댓글등록자 */
+	p_seq CHAR(40 BYTE), /* 게시글ID */
+	c_content VARCHAR2(255), /* 댓글내용 */
+	c_reg_dt DATE DEFAULT SYSDATE, /* 댓글등록일 */
+	c_mod_dt DATE DEFAULT SYSDATE, /* 댓글수정일 */
+	c_like_cnt NUMBER(6) /* 댓글좋아요수 */
+);
+
+COMMENT ON TABLE COMM IS '댓글';
+
+COMMENT ON COLUMN COMM.c_id IS '댓글ID';
+
+COMMENT ON COLUMN COMM.m_id IS '댓글등록자';
+
+COMMENT ON COLUMN COMM.p_seq IS '게시글ID';
+
+COMMENT ON COLUMN COMM.c_content IS '댓글내용';
+
+COMMENT ON COLUMN COMM.c_reg_dt IS '댓글등록일';
+
+COMMENT ON COLUMN COMM.c_mod_dt IS '댓글수정일';
+
+COMMENT ON COLUMN COMM.c_like_cnt IS '댓글좋아요수';
+
+CREATE UNIQUE INDEX PK_COMM
+	ON COMM (
+		c_id ASC
+	);
+
+ALTER TABLE COMM
+	ADD
+		CONSTRAINT PK_COMM
+		PRIMARY KEY (
+			c_id
+		);
+
+ALTER TABLE COMM
+	ADD
+		CONSTRAINT FK_POST_TO_COMM
+		FOREIGN KEY (
+			p_seq
+		)
+		REFERENCES POST (
+			p_seq
+		);
+
+ALTER TABLE COMM
+	ADD
+		CONSTRAINT FK_MEMBER_TO_COMM
+		FOREIGN KEY (
+			m_id
+		)
+		REFERENCES MEMBER (
+			m_id
+		);
