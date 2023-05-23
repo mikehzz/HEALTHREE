@@ -34,16 +34,14 @@ const renderCalendar = () => {
   const lastDateIndex = dates.lastIndexOf(TLDate);
 
   dates.forEach((date, i) => {
-    const condition = i >= firstDateIndex && i < lastDateIndex + 1
-                      ? 'this'
-                      : 'other';
+    const condition = i >= firstDateIndex && i < lastDateIndex + 1 ? 'this' : 'other';
     dates[i] = `<div class="date"><span class=${condition}>${date}</span></div>`;
   });
 
   document.querySelector('.dates').innerHTML = dates.join('');
-  
+
   const today = new Date();
-  if(viewMonth === today.getMonth() && viewYear === today.getFullYear()) {
+  if (viewMonth === today.getMonth() && viewYear === today.getFullYear()) {
     for (let date of document.querySelectorAll('.this')) {
       if (+date.innerText === today.getDate()) {
         date.classList.add('today');
@@ -51,8 +49,26 @@ const renderCalendar = () => {
       }
     }
   }
+
+  const addDataToCell = (button) => {
+    const dateValue = button.innerText;
+    // 여기에 날짜 칸에 데이터를 추가하는 로직을 작성하세요.
+    console.log(`Data added to cell: ${dateValue}`);
+    // 새로운 HTML 페이지로 이동
+    // window.location.href = '새로운페이지.html';
+  };
+
+  const dateButtons = document.querySelectorAll('.date');
+  dateButtons.forEach((button) => {
+    const dateValue = button.querySelector('span').innerText;
+    const inputButton = document.createElement('button');
+    inputButton.innerText = '음식 추가하기';
+    inputButton.classList.add('input-btn');
+    inputButton.addEventListener('click', () => addDataToCell(dateValue));
+    button.appendChild(inputButton); // 버튼을 날짜 칸에 추가
+  });
 };
-  
+
 renderCalendar();
 
 const prevMonth = () => {
@@ -64,25 +80,8 @@ const nextMonth = () => {
   date.setMonth(date.getMonth() + 1);
   renderCalendar();
 };
+
 const goToday = () => {
   date = new Date();
   renderCalendar();
 };
-
-const addDataToCell = (button) => {
-  const dateValue = button.innerText;
-  // 여기에 날짜 칸에 데이터를 추가하는 로직을 작성하세요.
-  console.log(`Data added to cell: ${dateValue}`);
-  // 새로운 HTML 페이지로 이동
-  //window.location.href = '새로운페이지.html';
-};
-
-const dateButtons = document.querySelectorAll('.date');
-dateButtons.forEach((button) => {
-  const dateValue = button.querySelector('span').innerText;
-  const inputButton = document.createElement('button');
-  inputButton.innerText = '음식 추가하기';
-  inputButton.classList.add('input-btn');
-  inputButton.addEventListener('click', () => addDataToCell(dateValue));
-  button.appendChild(inputButton); // 버튼을 날짜 칸에 추가
-});
