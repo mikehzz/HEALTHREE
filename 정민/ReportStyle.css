@@ -1,0 +1,60 @@
+@charset "UTF-8";
+@import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css');
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}
+
+header {
+	height: 50px;
+}
+
+.wrap {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.tab_menu {
+	position: relative;
+}
+
+.tab_menu .list {
+	overflow: hidden;
+}
+
+.tab_menu .list li {
+	float: left;
+	margin-right: 5px;
+	border: solid #f8f8f8;
+}
+
+.tab_menu .list li.is_on .btn {
+	padding-left: 30px;
+	padding-right: 30px;
+	background-color: #88C6FC;
+	color: white;
+}
+
+.tab_menu .list .btn {
+	padding-left: 30px;
+	padding-right: 30px; font-size : 30px;
+	font-family: 'NanumSquareNeoBold';
+	font-size: 30px;
+}
+
+.tab_menu .cont_area .cont {
+	display: none;
+	width: 100%;
+	height: calc(100vh - 150px);
+	text-align: center;
+	line-height: calc(100vh - 150px);
+	background: #f8f8f8;
+	color: black;
+	font-family: 'NanumSquareNeo';
+	font-size: 100px;
+}

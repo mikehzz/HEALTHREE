@@ -65,6 +65,9 @@ const renderCalendar = () => {
     inputButton.innerText = '음식 추가하기';
     inputButton.classList.add('input-btn');
     inputButton.addEventListener('click', () => addDataToCell(dateValue));
+    
+    const lineBreak = document.createElement('br'); // 라인 스킵을 위한 <br> 요소 생성
+  	button.appendChild(lineBreak); // <br> 요소를 날짜 칸에 추가
     button.appendChild(inputButton); // 버튼을 날짜 칸에 추가
   });
 };
