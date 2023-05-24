@@ -21,3 +21,129 @@ for (var i = 0; i < tabList.length; i++) {
     document.querySelector(activeCont).style.display = 'block';
   });
 }
+
+// 그래프
+new Chart(document.getElementById("weightChart"), {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+            label: 'Weight',
+            data: [
+                65,
+                70,
+                68,
+                65,
+                73,
+                72,
+                75,
+                73,
+                70,
+                68,
+                70,
+                72
+            ],
+            fill: false,
+            borderColor: "#c9f06f",
+            lineTension: 0
+        }]
+    },
+    options: {
+        responsive: true, // 컨테이너가 수행 할 때 차트 캔버스의 크기를 조정(dafalut : true)
+        maintainAspectRatio: true, // // (width / height) 크기를 조정할 떄 원래 캔버스 종횡비를 유지 (defalut : true)
+        tooltips: {
+            mode: 'index',
+            intersect: false,
+        },
+        hover: {
+            mode: 'nearest',
+            intersect: true
+        },
+        scales: {
+            x: {
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Month'
+                }
+            },
+            y: {
+                display: true,
+                scaleLabel: {
+                    display: true,
+                }
+            }
+        }
+    }
+});
+
+new Chart(document.getElementById("caloryChart"), {
+    type: 'line',
+    data: {
+        labels: ['5/15', '5/16', '5/17', '5/18', '5/19', '5/20', '5/21'],
+        datasets: [{
+            label: 'Calory',
+            data: [
+                1950,
+                2100,
+                2040,
+                1950,
+                2190,
+                2160,
+                2250
+            ],
+            fill: false,
+            borderColor: "#88C6FC",
+            lineTension: 0
+        }]
+    },
+    options: {
+        responsive: true, // 컨테이너가 수행 할 때 차트 캔버스의 크기를 조정(dafalut : true)
+        maintainAspectRatio: true, // // (width / height) 크기를 조정할 떄 원래 캔버스 종횡비를 유지 (defalut : true)
+        tooltips: {
+            mode: 'index',
+            intersect: false,
+        },
+        hover: {
+            mode: 'nearest',
+            intersect: true
+        },
+        scales: {
+            x: {
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Month'
+                }
+            },
+            y: {
+                display: true,
+                scaleLabel: {
+                    display: true,
+                }
+            }
+        }
+    }
+});
+
+new Chart(document.getElementById("nutrientChart"), {
+     type: 'doughnut',
+    data: {
+      labels: ['탄수화물', '단백질', '지방', '당류', '나트륨', '콜레스테롤', 'etc'],
+      datasets: [{
+        data: [40, 30, 10, 10, 5, 3, 2],      // 섭취량, 총급여량 - 섭취량
+        backgroundColor: [
+          '#FFCCCC',
+          '#FFE5CC',
+          '#FFFFCC',
+          '#CCFFE5',
+          '#CCE5FF',
+          '#E5CCFF',
+          '#FFCCE5'
+        ],
+        borderWidth: 0,
+        scaleBeginAtZero: true,
+      }
+    ]
+  },
+});

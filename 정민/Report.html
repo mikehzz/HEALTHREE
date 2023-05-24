@@ -7,8 +7,17 @@
 </head>
 <body>
 	<div class="wrap">
-		<div class="tab_menu">
-			<header> </header>
+		<header>
+		 <nav>
+	      <ul>
+	        <li><a href="Calendar.html">다이어리</a></li>
+	        <li><a href="#">마이 페이지</a></li>
+	        <li><a href="#">로그아웃</a></li>
+	      </ul>
+	      </nav>
+		</header>
+		<main>
+		 <div class="tab_menu">
 			<ul class="list">
 				<li class="is_on"><a href="#tab1" class="btn">몸무게</a></li>
 				<li><a href="#tab2" class="btn">칼로리</a></li>
@@ -16,17 +25,27 @@
 			</ul>
 			<div class="cont_area">
 				<div id="tab1" class="cont" style="display: block;">
-					그래프 어떻게 올리냐
+					<div class="linechart">
+				    <canvas id="weightChart"></canvas>
+				  </div>
 				</div>
 				<div id="tab2" class="cont">
-					Chart.js
+					<div class="linechart">
+	           <canvas id="caloryChart"></canvas>
+	         </div>
 				</div>
 				<div id="tab3" class="cont">
-					우갸갸
+					<div class="doughnutchart">
+	           <canvas id="nutrientChart"></canvas>
+	         </div>
 				</div>
-			</div>
-		</div>
-	</div>
+			 </div>
+	    </div>
+	   </main>
+	  </div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 	<script src="ReportJS.js"></script>
 </body>
 </html>

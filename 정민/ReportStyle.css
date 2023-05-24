@@ -1,6 +1,13 @@
 @charset "UTF-8";
 @import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css');
 
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'san-serif';
+  box-sizing: border-box;
+}
+
 ul {
 	list-style: none;
 }
@@ -11,7 +18,31 @@ a {
 }
 
 header {
-	height: 50px;
+  margin-bottom: 30px;
+  background-color: #f8f8f8;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block; /* 한 줄에 배치 */
+}
+
+nav ul li a {
+  display: block; /* 혼자 한 줄 차지 */
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  font-family: 'NanumSquareNeo';
+  font-size: 15px;
+}
+
+nav ul li a:hover {
+  background-color: #ddd;
 }
 
 .wrap {
@@ -36,7 +67,7 @@ header {
 .tab_menu .list li.is_on .btn {
 	padding-left: 30px;
 	padding-right: 30px;
-	background-color: #88C6FC;
+	background-color: #a3a7ad;
 	color: white;
 }
 
@@ -48,13 +79,22 @@ header {
 }
 
 .tab_menu .cont_area .cont {
-	display: none;
-	width: 100%;
-	height: calc(100vh - 150px);
-	text-align: center;
-	line-height: calc(100vh - 150px);
-	background: #f8f8f8;
-	color: black;
-	font-family: 'NanumSquareNeo';
-	font-size: 100px;
+  display: none;
+  width: 100%;
+  height: calc(100vh - 170px);
+  background: #f8f8f8;
+}
+
+.linechart {
+	width: 1300px;
+	height: 900px;
+	padding: 50px;
+	margin: 0 auto;
+}
+
+.doughnutchart {
+	width: 1300px;
+  height: 1000px;
+	padding: 50px;
+  margin: 0 auto;
 }
