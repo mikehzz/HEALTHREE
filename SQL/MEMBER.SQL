@@ -12,9 +12,9 @@ CREATE TABLE MEMBER (
 	m_email VARCHAR2(50) NOT NULL, /* 이메일 */
 	m_gender CHAR(1) NOT NULL, /* 성별 */
 	m_birthday DATE NOT NULL, /* 생년월일 */
-	m_height NUMBER(3) NOT NULL, /* 신장 */
-	m_weight NUMBER(3) NOT NULL, /* 현재 체중 */
-	m_target_weight NUMBER(3) NOT NULL, /* 목표 체중 */
+	m_height NUMBER(3, 1) NOT NULL, /* 신장 */
+	m_weight NUMBER(3, 1) NOT NULL, /* 현재 체중 */
+	m_target_weight NUMBER(3, 1) NOT NULL, /* 목표 체중 */
 	m_act_lv NUMBER(1) NOT NULL, /* 활동 레벨 */
 	m_diet_goal NUMBER(1) NOT NULL /* 다이어트 목표 */
 );
@@ -54,4 +54,3 @@ ALTER TABLE MEMBER
 		PRIMARY KEY (
 			m_id
 		);
-COMMIT;

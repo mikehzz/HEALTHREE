@@ -1,23 +1,23 @@
 DROP INDEX PK_FILE_ATTR;
 
-/* 颇老加己 */
+/* ???? */
 DROP TABLE FILE_ATTR 
 	CASCADE CONSTRAINTS;
 
-/* 颇老加己 */
+/* ???? */
 CREATE TABLE FILE_ATTR (
-	atch_file_id VARCHAR2(30 BYTE) NOT NULL, /* 梅何颇老ID */
-	use_yn CHAR(1) NOT NULL, /* 荤侩 咯何 */
-	reg_dt DATE DEFAULT SYSDATE /* 殿废老 */
+	atch_file_id VARCHAR2(30 BYTE) NOT NULL, /* ????ID */
+	use_yn CHAR(1) NOT NULL, /* ?? ?? */
+	reg_dt DATE DEFAULT SYSDATE /* ??? */
 );
 
-COMMENT ON TABLE FILE_ATTR IS '颇老加己';
+COMMENT ON TABLE FILE_ATTR IS '????';
 
-COMMENT ON COLUMN FILE_ATTR.atch_file_id IS '梅何颇老ID';
+COMMENT ON COLUMN FILE_ATTR.atch_file_id IS '????ID';
 
-COMMENT ON COLUMN FILE_ATTR.use_yn IS '荤侩 咯何';
+COMMENT ON COLUMN FILE_ATTR.use_yn IS '?? ??';
 
-COMMENT ON COLUMN FILE_ATTR.reg_dt IS '殿废老';
+COMMENT ON COLUMN FILE_ATTR.reg_dt IS '???';
 
 CREATE UNIQUE INDEX PK_FILE_ATTR
 	ON FILE_ATTR (

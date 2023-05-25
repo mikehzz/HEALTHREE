@@ -9,13 +9,13 @@ CREATE TABLE FOOD (
 	f_code CHAR(7) NOT NULL, /* 식품코드 */
 	f_name VARCHAR2(50) NOT NULL, /* 식품명 */
 	f_size NUMBER(4) NOT NULL, /* 총내용량 */
-	f_cal NUMBER(4) NOT NULL, /* 칼로리 */
-	f_carbo NUMBER(4) NOT NULL, /* 탄수화물 */
-	f_protein NUMBER(4) NOT NULL, /* 단백질 */
-	f_fat NUMBER(4) NOT NULL, /* 지방 */
-	f_sugar NUMBER(4) NOT NULL, /* 당류 */
-	f_na NUMBER(4) NOT NULL, /* 나트륨 */
-	f_cole NUMBER(4) NOT NULL /* 콜레스테롤 */
+	f_cal NUMBER(6, 2) NOT NULL, /* 칼로리 */
+	f_carbo NUMBER(6, 2) NOT NULL, /* 탄수화물 */
+	f_protein NUMBER(6, 2) NOT NULL, /* 단백질 */
+	f_fat NUMBER(6, 2) NOT NULL, /* 지방 */
+	f_sugar NUMBER(6, 2) NOT NULL, /* 당류 */
+	f_na NUMBER(6, 2) NOT NULL, /* 나트륨 */
+	f_cole NUMBER(6, 2) NOT NULL /* 콜레스테롤 */
 );
 
 COMMENT ON TABLE FOOD IS '식품';

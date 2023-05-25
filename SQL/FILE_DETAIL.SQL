@@ -53,4 +53,6 @@ ALTER TABLE FILE_DETAIL
 		)
 		REFERENCES FILE_ATTR (
 			atch_file_id
-		);
+		)
+		ON DELETE CASCADE
+		;

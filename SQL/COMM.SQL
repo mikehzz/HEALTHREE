@@ -8,11 +8,11 @@ DROP TABLE COMM
 CREATE TABLE COMM (
 	c_id CHAR(43 BYTE) NOT NULL, /* 댓글ID */
 	m_id VARCHAR2(20) NOT NULL, /* 댓글등록자 */
-	p_seq CHAR(40 BYTE), /* 게시글ID */
-	c_content VARCHAR2(255), /* 댓글내용 */
-	c_reg_dt DATE DEFAULT SYSDATE, /* 댓글등록일 */
+	p_seq CHAR(40 BYTE) NOT NULL, /* 게시글ID */
+	c_content VARCHAR2(255) NOT NULL, /* 댓글내용 */
+	c_reg_dt DATE DEFAULT SYSDATE NOT NULL, /* 댓글등록일 */
 	c_mod_dt DATE DEFAULT SYSDATE, /* 댓글수정일 */
-	c_like_cnt NUMBER(6) /* 댓글좋아요수 */
+	c_like_cnt NUMBER(4) /* 댓글좋아요수 */
 );
 
 COMMENT ON TABLE COMM IS '댓글';
@@ -51,7 +51,7 @@ ALTER TABLE COMM
 		)
 		REFERENCES POST (
 			p_seq
-		);
+		)ON DELETE CASCADE;
 
 ALTER TABLE COMM
 	ADD
@@ -61,4 +61,4 @@ ALTER TABLE COMM
 		)
 		REFERENCES MEMBER (
 			m_id
-		);
+		)ON DELETE CASCADE;

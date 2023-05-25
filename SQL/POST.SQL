@@ -60,7 +60,8 @@ ALTER TABLE POST
 		)
 		REFERENCES FILE_ATTR (
 			atch_file_id
-		);
+		)
+		ON DELETE CASCADE;
 
 ALTER TABLE POST
 	ADD
@@ -70,4 +71,4 @@ ALTER TABLE POST
 		)
 		REFERENCES MEMBER (
 			m_id
-		);
+		)ON DELETE CASCADE;
