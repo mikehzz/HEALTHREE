@@ -11,11 +11,11 @@ CREATE TABLE POST (
 	p_title VARCHAR2(200 CHAR) NOT NULL, /* 게시글제목 */
 	p_read_cnt NUMBER(6) DEFAULT 0, /* 게시글조회수 */
 	p_atch_file_id VARCHAR2(30 BYTE), /* 첨부파일ID */
-	p_div VARCHAR2(15 BYTE) NOT NULL, /* 게시글구분 */
+	p_div NUMBER(2) NOT NULL, /* 게시글구분 */
 	p_contents CLOB, /* 게시글내용 */
 	p_reg_dt DATE DEFAULT SYSDATE NOT NULL, /* 게시글등록일 */
 	p_mod_dt DATE DEFAULT SYSDATE, /* 게시글수정일 */
-	p_like_cnt NUMBER(6) /* 게시글좋아요수 */
+	p_like_cnt NUMBER(6) DEFAULT 0 /* 게시글좋아요수 */
 );
 
 COMMENT ON TABLE POST IS '게시판';

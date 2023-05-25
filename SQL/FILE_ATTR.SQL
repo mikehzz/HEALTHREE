@@ -1,23 +1,23 @@
 DROP INDEX PK_FILE_ATTR;
 
-/* ???? */
+/* 파일속성 */
 DROP TABLE FILE_ATTR 
 	CASCADE CONSTRAINTS;
 
-/* ???? */
+/* 파일속성 */
 CREATE TABLE FILE_ATTR (
-	atch_file_id VARCHAR2(30 BYTE) NOT NULL, /* ????ID */
-	use_yn CHAR(1) NOT NULL, /* ?? ?? */
-	reg_dt DATE DEFAULT SYSDATE /* ??? */
+	atch_file_id VARCHAR2(30 BYTE) NOT NULL, /* 첨부파일ID */
+	use_yn CHAR(1) NOT NULL, /* 사용 여부 */
+	reg_dt DATE DEFAULT SYSDATE /* 등록일 */
 );
 
-COMMENT ON TABLE FILE_ATTR IS '????';
+COMMENT ON TABLE FILE_ATTR IS '파일속성';
 
-COMMENT ON COLUMN FILE_ATTR.atch_file_id IS '????ID';
+COMMENT ON COLUMN FILE_ATTR.atch_file_id IS '첨부파일ID';
 
-COMMENT ON COLUMN FILE_ATTR.use_yn IS '?? ??';
+COMMENT ON COLUMN FILE_ATTR.use_yn IS '사용 여부';
 
-COMMENT ON COLUMN FILE_ATTR.reg_dt IS '???';
+COMMENT ON COLUMN FILE_ATTR.reg_dt IS '등록일';
 
 CREATE UNIQUE INDEX PK_FILE_ATTR
 	ON FILE_ATTR (

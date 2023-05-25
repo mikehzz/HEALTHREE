@@ -12,7 +12,7 @@ CREATE TABLE COMM (
 	c_content VARCHAR2(255) NOT NULL, /* 댓글내용 */
 	c_reg_dt DATE DEFAULT SYSDATE NOT NULL, /* 댓글등록일 */
 	c_mod_dt DATE DEFAULT SYSDATE, /* 댓글수정일 */
-	c_like_cnt NUMBER(4) /* 댓글좋아요수 */
+	c_like_cnt NUMBER(4) DEFAULT 0 /* 댓글좋아요수 */
 );
 
 COMMENT ON TABLE COMM IS '댓글';
