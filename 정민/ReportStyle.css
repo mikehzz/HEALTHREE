@@ -1,69 +1,57 @@
 @charset "UTF-8";
-@import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css');
+
+@import
+	url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css');
 
 * {
-  margin: 0;
-  padding: 0;
-  font-family: 'san-serif';
-  box-sizing: border-box;
-}
-
-ul {
-	list-style: none;
-}
-
-a {
-	text-decoration: none;
-	color: #333;
+	margin: 0;
+	padding: 0;
+	font-family: 'san-serif';
+	box-sizing: border-box; /* 박스 크기 기준: 테두리 */
 }
 
 header {
-  margin-bottom: 30px;
-  background-color: #f8f8f8;
+	margin-bottom: 50px;
+	background-color: #F8F8F8;
 }
 
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.top {
+	list-style-type: none; /* 불릿 없애기 */
 }
 
-nav ul li {
-  display: inline-block; /* 한 줄에 배치 */
+.top_menu {
+	display: inline-block; /* 한 줄에 배치 */
 }
 
-nav ul li a {
-  display: block; /* 혼자 한 줄 차지 */
-  padding: 10px;
-  text-decoration: none;
-  color: #333;
-  font-family: 'NanumSquareNeo';
-  font-size: 15px;
+.top_name {
+	display: block; /* 혼자 한 줄 차지 */
+	padding: 10px;
+	text-decoration: none; /* 하이퍼링크 텍스트 밑줄 없애기 */
+	color: #333;
+	font-family: 'NanumSquareNeo';
+	font-size: 15px;
 }
 
-nav ul li a:hover {
-  background-color: #ddd;
-}
-
-.wrap {
-	padding-left: 15px;
-	padding-right: 15px;
+.top_name:hover {
+	background-color: #ddd;
 }
 
 .tab_menu {
-	position: relative;
+	position: relative; /* 요소 자기 자신을 기준으로 배치 */
 }
 
 .tab_menu .list {
-	overflow: hidden;
+	list-style: none;
+	overflow: hidden; /* 부모요소의 범위를 넘어가는 자식요소의 부분은 보이지 않도록 처리 */
 }
 
 .tab_menu .list li {
-	float: left;
-	margin-right: 5px;
+	float: left; /* 왼쪽 정렬 */
+	margin-right: 10px;
 	border: solid #f8f8f8;
 }
 
+/* 활성화된 탭 */
 .tab_menu .list li.is_on .btn {
 	padding-left: 30px;
 	padding-right: 30px;
@@ -71,18 +59,22 @@ nav ul li a:hover {
 	color: white;
 }
 
+/* 전체 탭 */
 .tab_menu .list .btn {
+	text-decoration: none;
+	text-decoration: none;
 	padding-left: 30px;
-	padding-right: 30px; font-size : 30px;
+	padding-right: 30px;
 	font-family: 'NanumSquareNeoBold';
-	font-size: 30px;
+	font-size: 25px;
+  color: #333;
 }
 
 .tab_menu .cont_area .cont {
-  display: none;
-  width: 100%;
-  height: calc(100vh - 170px);
-  background: #f8f8f8;
+	display: none;
+	width: 100%;
+	height: calc(100vh - 170px);
+	background: #f8f8f8;
 }
 
 .linechart {
@@ -94,7 +86,7 @@ nav ul li a:hover {
 
 .doughnutchart {
 	width: 1300px;
-  height: 1000px;
+	height: 1000px;
 	padding: 50px;
-  margin: 0 auto;
+	margin: 0 auto;
 }
