@@ -28,7 +28,7 @@
 			<div class="cont_area">
 				<!-- tab1 -->
 				<div id="tab1" class="cont" style="display: block;">
-					<select>
+					<select class="cal_dropdown">
 						<option value="this_week">이번 주</option>
 						<option value="last_week">저번 주</option>
 					</select>
@@ -52,6 +52,10 @@
 
 				<!-- tab2 -->
 				<div id="tab2" class="cont">
+					<select class="nu_dropdown">
+						<option value="this_week">이번 주</option>
+						<option value="last_week">저번 주</option>
+					</select>
 					<div class="barchart">
 						<canvas id="nutrientChart"></canvas>
 					</div>
@@ -91,7 +95,8 @@
 			</div>
 		</div>
 	</main>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 	<script src="ReportJS.js"></script>
 	<script src="Logout.js"></script>
 </body>

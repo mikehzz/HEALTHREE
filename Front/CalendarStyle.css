@@ -37,7 +37,7 @@ header {
 
 /* 달력 */
 .calendar {
-	width: 80%;
+	width: 70%;
 	margin: 0 auto;
 }
 
@@ -89,12 +89,12 @@ header {
 /* 날짜 */
 .dates {
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row wrap; /* 부모요소 가로 세로크기 맞춰 section들이 순서대로 하나씩 정렬 */
 	border-top: 1px solid #c0c0c0;
 	border-right: 1px solid #c0c0c0;
 }
 
-.date {
+.date { /* 날짜를 표시하는 달력의 각 날짜 셀을 선택하는 선택자 */
 	width: calc(100% / 7);
 	padding: 15px;
 	text-align: right;
@@ -154,9 +154,13 @@ header {
 }
 
 /* 표 */
+.table_container {
+	display: flex;
+	justify-content: flex-end;
+}
+
 .summary_table {
-	margin-top: 30px;
-	margin-left: 125.3vh;
+	margin-top: 20px;
 	padding: 5px;
 	border: thin dotted #a3a7ad;
 	color: #333;
@@ -179,4 +183,8 @@ header {
 .fat {
 	padding-left: 10px;
 	padding-right: 5px;
+}
+
+.val {
+	text-align: right;
 }

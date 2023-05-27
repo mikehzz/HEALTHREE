@@ -2,7 +2,6 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="author" content="user">
 <link rel="stylesheet" href="CalendarStyle.css">
 <title>Calendar</title>
 </head>
@@ -18,8 +17,8 @@
 		</nav>
 	</header>
 	<main>
-		<!-- 달력 -->
 		<div class="calendar">
+		<!-- 달력 -->
 			<div class="cal_head">
 				<div class="year-month"></div>
 				<div class="nav">
@@ -28,7 +27,7 @@
 					<button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
 				</div>
 			</div>
-			<div class="main">
+			<div class="cal_main">
 				<div class="days">
 					<div class="day">일</div>
 					<div class="day">월</div>
@@ -40,41 +39,41 @@
 				</div>
 				<div class="dates"></div>
 			</div>
-		</div>
 		<!-- 표 -->
 		<div class="table_container">
 			<table class="summary_table">
-				<tr class="">
+				<tr>
 					<th class="avg_sum">일일 평균</th>
-					<td>??</td>
+					<td class="val">값</td>
 					<td>kcal</td>
 					<td class="carbs">(탄수화물:</td>
-					<td>??</td>
+					<td class="val">값</td>
 					<td>g</td>
 					<td class="protein">단백질:</td>
-					<td>??</td>
+					<td class="val">값</td>
 					<td>g</td>
 					<td class="fat">지방:</td>
-					<td>??</td>
+					<td class="val">값</td>
 					<td>g</td>
 					<td>)</td>
 				</tr>
-				<tr class="">
+				<tr>
 					<th class="avg_sum">월별 합산</th>
-					<td>??</td>
+					<td class="val">값</td>
 					<td>kcal</td>
 					<td class="carbs">(탄수화물:</td>
-					<td>??</td>
+					<td class="val">값</td>
 					<td>g</td>
 					<td class="protein">단백질:</td>
-					<td>??</td>
+					<td class="val">값</td>
 					<td>g</td>
 					<td class="fat">지방:</td>
-					<td>??</td>
+					<td class="val">값</td>
 					<td>g</td>
 					<td>)</td>
 				</tr>
 			</table>
+		</div>
 		</div>
 	</main>
 	<script src="CalendarJS.js"></script>

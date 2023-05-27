@@ -79,7 +79,7 @@ header {
 }
 
 /* 칼로리 탭 내용 */
-select {
+.cal_dropdown {
 	margin-top: 20px;
 	margin-left: 50vh;
 	width: 80px;
@@ -128,9 +128,21 @@ select {
 }
 
 /* 영양소 탭 내용 */
+.nu_dropdown {
+	margin-top: 20px;
+	margin-left: 50vh;
+	width: 80px;
+	height: 22px;
+	line-height: 22px;
+	text-align: center;
+	font-size: 14px;
+	text-align: center;
+}
+
 .barchart {
-	width: 60%;
-	padding: 20px;
+	width: 50%;
+	padding-top: 20px;
+	padding-bottom: 40px;
 	margin: 0 auto; /* 가운데 정렬 */
 }
 
