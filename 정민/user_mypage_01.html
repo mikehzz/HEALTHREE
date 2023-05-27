@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="SSR">
+  <title>회원정보</title>
+  <style>
+    @import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css');
+    
+    body {
+      font-family: 'NanumSquareNeo';
+      background-color: #ffffff;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    h2 {
+      color: #333;
+      text-align: center;
+      font-weight: 800;
+      font-family: 'NanumSquareNeoHeavy';
+    }
+    
+    .info-container {
+      background-color: #f8f8f8;
+      border-radius: 5px;
+      padding: 30px;
+      margin: 0 auto;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .info-label {
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+      font-family: 'NanumSquareNeoExtraBold';
+    }
+    
+    .info-value {
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+    
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+    
+    input[type="submit"],
+    input[type="button"] {
+      background-color: #88C6FC;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: 'NanumSquareNeoExtraBold';
+      transition: background-color 0.3s ease;
+    }
+    
+    input[type="submit"]:hover,
+    input[type="button"]:hover {
+      background-color: #c9f06f;
+
+    }
+    
+    
+    .cancel-button {
+      background-color: #ccc;
+      margin-right: 10px;
+    }
+    
+    .cancel-button:hover {
+      background-color: #999;
+    }
+    
+    
+    header {
+    margin-bottom: 50px;
+    background-color: #F8F8F8;
+    }
+    .top {
+    list-style-type: none; /* 불릿 없애기 */
+    }
+    .top_menu {
+     display: inline-block; /* 한 줄에 배치 */
+    }
+    .top_name {
+     display: block; /* 혼자 한 줄 차지 */
+      padding: 10px;
+     text-decoration: none; /* 하이퍼링크 텍스트 밑줄 없애기 */
+     color: #333;
+     font-family: 'NanumSquareNeo';
+     font-size: 15px;
+    }
+    
+    .top_name:hover {
+    background-color: #ddd;
+    }
+    
+    html, body {
+    height: 100%;
+    }
+
+    .site-footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .site-footer .container {
+      max-width: 960px;
+      margin: 0 auto;
+     }
+  
+  </style>
+</head>
+<body>
+  <header>
+    <li class="top_menu"><a href="#" class="top_name">다이어리</a></li>
+    <li class="top_menu"><a href="#" class="top_name">마이 페이지</a></li>
+    <li class="top_menu"><a href="#" class="top_name">로그아웃</a></li>
+  </header>
+  <h2>회원정보</h2>
+  <div class="info-container">
+    <div class="info-value">여성</div>
+    <label class="info-label">생년월일:</label>
+    <div class="info-value">1990-01-01</div>
+    <label class="info-label">키 (cm):</label>
+    <div class="info-value">160</div>
+    <label class="info-label">체중 (kg):</label>
+    <div class="info-value">정보 넣기 </div>
+    <label class="info-label">목표 체중 (kg):</label>
+    <div class="info-value">55</div>
+    <label class="info-label">활동 레벨:</label>
+    <div class="info-value">보통</div>
+    <label class="info-label">다이어트 목표:</label>
+    <div class="info-value">감량</div>
+    <div class="button-container">
+    </div>
+    <div class="button-container">
+      <input type="button" value="수정" onclick="window.open('user_mypage_02.html');">
+      <input type="button" class="cancel-button" value="취소" onclick="window.location.href='/cancel'">
+    </div>
+    <footer class="site-footer">
+      <div class="copyright">
+        <div class="container">
+        대표문의전화: 02-2231-6412 <br>
+        오시는 길 : 서울시 마포구 양화로 112 LAB7 3,4층 <br>
+        광고 문의 : 010-2231-6412<br>
+      </div>
+      </div>
+    </footer>
+</body>
+</html>
+
+
+
+
+
