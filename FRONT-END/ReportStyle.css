@@ -1,0 +1,173 @@
+@charset "UTF-8";
+
+@import
+	url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css')
+	;
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'NanumSquareNeo';
+	box-sizing: border-box; /* 박스 크기 기준: 테두리 */
+}
+
+header {
+	margin-bottom: 50px;
+	background-color: #F8F8F8;
+}
+
+.top {
+	list-style-type: none; /* 불릿 없애기 */
+}
+
+.top_menu {
+	display: inline-block; /* 한 줄에 배치 */
+}
+
+.top_name {
+	display: block; /* 혼자 한 줄 차지 */
+	padding: 10px;
+	text-decoration: none; /* 하이퍼링크 텍스트 밑줄 없애기 */
+	color: #333;
+	font-family: 'NanumSquareNeo';
+	font-size: 15px;
+}
+
+.top_name:hover {
+	background-color: #ddd;
+}
+
+.tab_menu {
+	position: relative; /* 요소 자기 자신을 기준으로 배치 */
+}
+
+.tab_menu .list {
+	list-style-type: none;
+	overflow: hidden; /* 부모요소의 범위를 넘어가는 자식요소의 부분은 보이지 않도록 처리 */
+}
+
+.tab_menu .list li {
+	float: left; /* 왼쪽 정렬 */
+	margin-right: 10px; /* 탭끼리 간격 */
+	border: solid #f8f8f8;
+}
+
+/* 활성화된 탭 */
+.tab_menu .list li.is_on .btn {
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #a3a7ad;
+	color: white;
+}
+
+/* 전체 탭 */
+.tab_menu .list .btn {
+	text-decoration: none;
+	padding-left: 50px;
+	padding-right: 50px;
+	font-family: 'NanumSquareNeoBold';
+	font-size: 25px;
+	color: #333;
+}
+
+/* 본문 */
+.tab_menu .cont_area .cont {
+	display: none; /* 다른 탭의 요소를 보이지 않게 처리 */
+	width: 100%;
+	height: calc(100vh - 150px); /* 100vh 전체화면 뷰포트 */
+	background: #f8f8f8;
+}
+
+/* 칼로리 탭 내용 */
+.cal_dropdown {
+	margin-top: 20px;
+	margin-left: 50vh;
+	width: 80px;
+	height: 22px;
+	line-height: 22px;
+	text-align: center;
+	font-size: 14px;
+	text-align: center;
+}
+
+.linechart {
+	width: 60%;
+	padding: 20px;
+	margin: 0 auto; /* 가운데 정렬 */
+}
+
+.cal_table {
+	margin-left: 128vh;
+	border: thin dotted #a3a7ad;
+	color: #333;
+}
+
+.goal_caption {
+	text-align: left;
+	font-weight: bold;
+	margin-bottom: 6px;
+}
+
+.goal_list {
+	font-size: 15px;
+}
+
+.goal_title {
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 8px;
+	padding-bottom: 5px;
+}
+
+.goal_val {
+	padding-left: 10px;
+}
+
+.goal_unit {
+	padding-right: 20px;
+}
+
+/* 영양소 탭 내용 */
+.nu_dropdown {
+	margin-top: 20px;
+	margin-left: 50vh;
+	width: 80px;
+	height: 22px;
+	line-height: 22px;
+	text-align: center;
+	font-size: 14px;
+	text-align: center;
+}
+
+.barchart {
+	width: 50%;
+	padding-top: 20px;
+	padding-bottom: 40px;
+	margin: 0 auto; /* 가운데 정렬 */
+}
+
+.nu_table {
+	margin-top: 20px;
+	margin: 0 auto;
+	width: 60%;
+	border-collapse: collapse;
+	color: #333;
+}
+
+.nu_title {
+	border-top: none;
+	border-bottom: 1px solid #a3a7ad;
+}
+
+.nu_val {
+	border-top: none;
+	border-bottom: 1px solid #a3a7ad;
+	text-align: right;
+	padding-right: 7px;
+}
+
+.nu_unit {
+	border-top: none;
+	border-bottom: 1px solid #a3a7ad;
+	text-align: left;
+}
