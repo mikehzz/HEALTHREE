@@ -1,23 +1,26 @@
+/**
+ * 달력
+ */
 let date = new Date();
 
-const renderCalendar = () => {
+const renderCalendar = () => { // 달력 렌더링: 현재 날짜의 연도와 월 화면에 표시
   const viewYear = date.getFullYear();
   const viewMonth = date.getMonth();
 
   document.querySelector('.year-month').textContent = `${viewYear}년 ${viewMonth + 1}월`;
 
-  const prevLast = new Date(viewYear, viewMonth, 0);
-  const thisLast = new Date(viewYear, viewMonth + 1, 0);
+  const prevLast = new Date(viewYear, viewMonth, 0); // 이전 달의 마지막 날
+  const thisLast = new Date(viewYear, viewMonth + 1, 0); // 현재 달의 마지막 날
 
-  const PLDate = prevLast.getDate();
-  const PLDay = prevLast.getDay();
+  const PLDate = prevLast.getDate(); // 이전 달의 마지막 날짜
+  const PLDay = prevLast.getDay(); // 이전 달의 마지막 요일
 
-  const TLDate = thisLast.getDate();
-  const TLDay = thisLast.getDay();
+  const TLDate = thisLast.getDate(); // 현재 달의 마지막 날짜
+  const TLDay = thisLast.getDay(); // 현재 달의 마지막 요일
 
-  const prevDates = [];
-  const thisDates = [...Array(TLDate + 1).keys()].slice(1);
-  const nextDates = [];
+  const prevDates = []; // 이전 달의 날짜 배열
+  const thisDates = [...Array(TLDate + 1).keys()].slice(1); // 현재 달의 날짜 배열
+  const nextDates = []; // 다음 달의 날짜 배열
 
   if (PLDay !== 6) {
     for (let i = 0; i < PLDay + 1; i++) {
@@ -38,9 +41,9 @@ const renderCalendar = () => {
     dates[i] = `<div class="date"><span class=${condition}>${date}</span></div>`;
   });
 
-  document.querySelector('.dates').innerHTML = dates.join('');
+  document.querySelector('.dates').innerHTML = dates.join(''); // HTML 요소로 변환
 
-  const today = new Date();
+  const today = new Date(); // 오늘 날짜 표시
   if (viewMonth === today.getMonth() && viewYear === today.getFullYear()) {
     for (let date of document.querySelectorAll('.this')) {
       if (+date.innerText === today.getDate()) {
@@ -50,6 +53,9 @@ const renderCalendar = () => {
     }
   }
 
+/**
+ * 버튼 클릭 시 해당 날짜에 데이터 추가
+ */
   const addDataToCell = (button) => {
     const dateValue = button.innerText;
     // 여기에 날짜 칸에 데이터를 추가하는 로직을 작성하세요.
@@ -57,15 +63,16 @@ const renderCalendar = () => {
     // 새로운 HTML 페이지로 이동
     // window.location.href = '새로운페이지.html';
   };
-
   const dateButtons = document.querySelectorAll('.date');
   dateButtons.forEach((button) => {
     const dateValue = button.querySelector('span').innerText;
     const inputButton = document.createElement('button');
     inputButton.innerText = '음식 추가하기';
     inputButton.classList.add('input-btn');
+
+		// 날짜 버튼을 클릭할 때마다 addDataToCell 함수 호출    
     inputButton.addEventListener('click', () => addDataToCell(dateValue));
-    
+
     const lineBreak = document.createElement('br'); // 라인 스킵을 위한 <br> 요소 생성
   	button.appendChild(lineBreak); // <br> 요소를 날짜 칸에 추가
     button.appendChild(inputButton); // 버튼을 날짜 칸에 추가
@@ -74,16 +81,19 @@ const renderCalendar = () => {
 
 renderCalendar();
 
+// 이전 달로 이동
 const prevMonth = () => {
   date.setMonth(date.getMonth() - 1);
   renderCalendar();
 };
 
+// 다음 달로 이동
 const nextMonth = () => {
   date.setMonth(date.getMonth() + 1);
   renderCalendar();
 };
 
+// 오늘 날짜로 이동
 const goToday = () => {
   date = new Date();
   renderCalendar();
