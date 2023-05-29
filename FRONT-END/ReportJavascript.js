@@ -154,6 +154,7 @@ updateTab1Chart();
 const updateTab2Chart = () => {
 	const selectElement = document.querySelector('.nu_dropdown');
 	const selectedOption = selectElement.value;
+	const tableCells = document.querySelectorAll('.nu_table td');
 
 	// 이번 주
 	if (selectedOption === 'this_week') {
@@ -232,6 +233,20 @@ const updateTab2Chart = () => {
 			}
 		});
 		
+		const thisCarbs = '?'; // 이번 주 탄수화물
+    const thisProtein = '?'; // 이번 주 단백질
+    const thisFat = '?'; // 이번 주 지방
+    const thisSugar = '?'; // 이번 주 당류
+    const thisNa = '?'; // 이번 주 나트륨
+    const thisCole = '?'; // 이번 주 콜레스테롤
+
+    tableCells[0].textContent = thisCarbs;
+    tableCells[2].textContent = thisProtein;
+    tableCells[4].textContent = thisFat;
+    tableCells[6].textContent = thisSugar;
+    tableCells[8].textContent = thisNa;
+    tableCells[10].textContent = thisCole;
+
 		// 저번 주
 	} else if (selectedOption === 'last_week') {
 		new Chart(document.getElementById("nutrientChart"), {
@@ -308,6 +323,21 @@ const updateTab2Chart = () => {
 				}
 			}
 		});
+		
+		const lastCarbs = '??'; // 저번 주 탄수화물
+    const lastProtein = '??'; // 저번 주 단백질
+    const lastFat = '??'; // 저번 주 지방
+    const lastSugar = '??'; // 저번 주 당류
+    const lastNa = '??'; // 저번 주 나트륨
+    const lastCole = '??'; // 저번 주 콜레스테롤
+	
+		tableCells[0].textContent = lastCarbs;
+    tableCells[2].textContent = lastProtein;
+    tableCells[4].textContent = lastFat;
+    tableCells[6].textContent = lastSugar;
+    tableCells[8].textContent = lastNa;
+    tableCells[10].textContent = lastCole;
+		
 	}
 };
 
@@ -320,6 +350,7 @@ selectElementTab2.value = 'this_week';
 
 // 초기 로딩 시 그래프와 테이블 업데이트
 updateTab2Chart();
+
 
 
 
