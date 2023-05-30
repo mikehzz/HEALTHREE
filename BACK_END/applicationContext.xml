@@ -4,13 +4,17 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-
+	
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 	   <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
 	   <property name="url"  value="jdbc:oracle:thin:@192.168.0.123:1521:XE"></property>
 	   <property name="username" value="healthree"></property>
 	   <property name="password" value="1818"></property>
+	</bean>
+
+	<bean id="mealDao" class="com.pcwk.ehr.MealDao">
+		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
 	<bean id="postDao" class="com.pcwk.ehr.PostDao">
