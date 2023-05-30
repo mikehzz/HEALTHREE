@@ -21,7 +21,7 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
-	<bean id="memberDao" class="com.pcwk.ehr.MemberDao">
+	<bean id="memberDao" class="com.pcwk.ehr.MemberDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
