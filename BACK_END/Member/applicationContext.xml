@@ -13,7 +13,10 @@
 	   <property name="password" value="1818"></property>
 	</bean>
 
-
+	<bean id="postDao" class="com.pcwk.ehr.PostDao">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
 	<bean id="memberDao" class="com.pcwk.ehr.MemberDao">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>

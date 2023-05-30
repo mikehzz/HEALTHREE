@@ -1,11 +1,11 @@
 package com.pcwk.ehr;
 
-public class MemberVO extends DTO {
+public class MemberVO extends MemberDTO {
 	private String id; // id
 	private String pw; // 비번
 	private String name; // 이름
 	private String email; // 이메일
-	private char gender; // 성별 ('M', 'F')
+	private String gender; // 성별 ('M', 'F')
 	private String birthday; // 생년월일
 	private int height; // 신장
 	private int weight; // 현재 체중
@@ -16,7 +16,7 @@ public class MemberVO extends DTO {
 	public MemberVO() {
 	}
 
-	public MemberVO(String id, String pw, String name, String email, char gender, String birthday, int height,
+	public MemberVO(String id, String pw, String name, String email, String gender, String birthday, int height,
 			int weight, int targetWeight, int actLevel, int dietGoal) {
 		super();
 		this.id = id;
@@ -64,11 +64,11 @@ public class MemberVO extends DTO {
 		this.email = email;
 	}
 
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(char gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
