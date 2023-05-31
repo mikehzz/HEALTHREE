@@ -47,10 +47,10 @@ public class MealDaoTest {
 		assertNotNull(context);
 		assertNotNull(dao);
 
-		mealVO = new MealVO("kjm", "20230530", "D", 1, "D00014");
+		mealVO = new MealVO("abc123", "20230530", "D", 1, "D00001");
 
-		meal01 = new MealVO("kjm", "20230530", "D", 1, "D00014");
-		meal02 = new MealVO("kjm", "20230530", "D", 2, "D00042");
+		meal01 = new MealVO("abc123", "20230530", "D", 1, "D00001");
+		meal02 = new MealVO("abc123", "20230530", "D", 2, "D00002");
 	}
 
 	@After
@@ -69,8 +69,8 @@ public class MealDaoTest {
 		LOG.debug("=====================");
 
 		// 삭제
-//		dao.deleteOne(meal01);
-//		dao.deleteOne(meal02);
+		dao.deleteOne(meal01);
+		dao.deleteOne(meal02);
 
 		// 추가
 		dao.add(meal01);

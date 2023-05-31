@@ -28,6 +28,32 @@ public class MealDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
+	// 삭제
+	public int deleteOne(final MealVO meal) throws SQLException {
+		int flag = 0;
+		// ---------------------------------------
+
+		StringBuilder sb = new StringBuilder(50);
+		sb.append(" DELETE FROM meal   \n");
+		sb.append(" WHERE              \n");
+		sb.append("         m_id   = ? \n");
+		sb.append("     AND m_date = ? \n");
+		sb.append("     AND m_div  = ? \n");
+		sb.append("     AND m_seq  = ? \n");
+
+		LOG.debug("1. sql =  \n" + sb.toString());
+		LOG.debug("2. param =\n" + meal.toString());
+
+		// param
+		Object[] args = { meal.getId(), meal.getDate(), meal.getDiv(), meal.getSeq() };
+
+		// jdbcTemplate.update DML에 사용
+		flag = jdbcTemplate.update(sb.toString(), args);
+		LOG.debug("3. flag = " + flag);
+
+		return flag;
+	}
+
 	// 추가
 	public int add(final MealVO meal) throws ClassNotFoundException, SQLException {
 		int flag = 0;// 등록 건수
