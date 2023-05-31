@@ -7,7 +7,7 @@ DROP TABLE MEAL
 /* 식사 */
 CREATE TABLE MEAL (
 	m_id VARCHAR2(20) NOT NULL, /* 회원아이디 */
-	m_date CHAR(8 BYTE) NOT NULL, /* 날짜 */
+	m_date CHAR(10 BYTE) NOT NULL, /* 날짜 */
 	m_div CHAR(1) NOT NULL, /* 식사구분 */
 	m_seq NUMBER(2) NOT NULL, /* 입력순서 */
 	f_code CHAR(7) NOT NULL /* 식품코드 */
@@ -51,7 +51,7 @@ ALTER TABLE MEAL
 		)
 		REFERENCES FOOD (
 			f_code
-		)ON DELETE CASCADE;
+		);
 
 ALTER TABLE MEAL
 	ADD
@@ -61,4 +61,4 @@ ALTER TABLE MEAL
 		)
 		REFERENCES MEMBER (
 			m_id
-		)ON DELETE CASCADE;
+		);
