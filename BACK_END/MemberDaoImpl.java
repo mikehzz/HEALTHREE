@@ -67,7 +67,6 @@ public class MemberDaoImpl implements MemberDao {
 		sb.append("     t1.m_email,         \n ");
 		sb.append("     t1.m_gender,        \n ");
 		sb.append("     TO_CHAR(t1.m_birthday, 'YYYY-MM-DD') m_birthday,  \n");
-		//sb.append("     TO_CHAR(t1.m_birthday, 'YYMMDD') m_birthday, \n");
 		sb.append("     t1.m_height,        \n ");
 		sb.append("     t1.m_weight,        \n ");
 		sb.append("     t1.m_target_weight, \n ");
@@ -174,7 +173,7 @@ public class MemberDaoImpl implements MemberDao {
 	// 회원가입
 	@Override
 	public int add(final MemberVO member) throws ClassNotFoundException, SQLException {
-		int flag = 0;// 등록 건수
+		int flag = 0;  // 등록 건수
 
 		StringBuilder sb = new StringBuilder(200);
 		sb.append(" INSERT INTO member ( \n ");
