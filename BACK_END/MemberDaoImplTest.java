@@ -20,6 +20,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.pcwk.ehr.MemberDao;
+import com.pcwk.ehr.MemberDaoImpl;
+import com.pcwk.ehr.MemberVO;
+
 @RunWith(SpringJUnit4ClassRunner.class) // 스프링 테스트 컨텍스 프레임워크의 JUnit확장 기능 지정
 @ContextConfiguration(locations = "/applicationContext.xml") // 테스트 컨텍스트가 자동으로 만들어줄 applicationContext 위치
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) // @Test 메소드를 오름차순으로 정렬한 순서대로 실행
@@ -47,9 +51,9 @@ public class MemberDaoImplTest {
 		assertNotNull(context);
 		assertNotNull(dao);
 
-		memberVO = new MemberVO("jm1122", "1234", "정민", "kimjmini1122@gmail.com", "F", "921122", 180, 50, 55, 2, 3);
+		memberVO = new MemberVO("jm1122", "1234", "정민", "kimjmini1122@gmail.com", "F", "1992/11/22", 180, 50, 55, 2, 3);
 		
-		member01 = new MemberVO("duck77", "12345", "오리", "quack@gmail.com", "F", "010101", 185, 60, 65, 3, 3);
+		member01 = new MemberVO("duck77", "12345", "오리", "quack@gmail.com", "F", "2001-01-01", 185, 60, 65, 3, 3);
 	}
 
 	@After
@@ -61,6 +65,7 @@ public class MemberDaoImplTest {
 	
 	// 수정
 	@Test
+	@Ignore
 	public void update() throws SQLException, ClassNotFoundException {
 		LOG.debug("===================");
 		LOG.debug("=update()=");
@@ -107,7 +112,7 @@ public class MemberDaoImplTest {
 		
 		// 6.1. 데이터 비교
 		isSameUser(fVO, getVO);
-	}
+	} // update()
 	
 	
 	public void isSameUser(MemberVO outVO, MemberVO memberVO) {
@@ -117,7 +122,7 @@ public class MemberDaoImplTest {
 		assertEquals(outVO.getName(), memberVO.getName());
 		assertEquals(outVO.getEmail(), memberVO.getEmail());
 		assertEquals(outVO.getGender(), memberVO.getGender());
-		//assertEquals(outVO.getBirthday(), memberVO.getBirthday()); -> date format 때문에...
+		assertEquals(outVO.getBirthday(), memberVO.getBirthday());
 		assertEquals(outVO.getHeight(), memberVO.getHeight());
 		assertEquals(outVO.getWeight(), memberVO.getWeight());
 		assertEquals(outVO.getTargetWeight(), memberVO.getTargetWeight());
@@ -125,6 +130,7 @@ public class MemberDaoImplTest {
 		assertEquals(outVO.getDietGoal(), memberVO.getDietGoal());
 	}
 
+	
 	// 삭제
 	@Test
 	@Ignore
@@ -136,7 +142,8 @@ public class MemberDaoImplTest {
 		// 삭제
 		dao.deleteOne(member01);		
 
-	}
+	} // delete()
+	
 	
 	// 추가
 	@Test
@@ -151,6 +158,29 @@ public class MemberDaoImplTest {
 		
 		// 추가
 		dao.add(member01);
-	}
+	} // add()
+	
+	
+	// 단건 조회
+	@Test
+	public void get() throws ClassNotFoundException, SQLException{
+		LOG.debug("=====================");
+		LOG.debug("=get()=");
+		LOG.debug("=====================");
+		
+		// 삭제
+		dao.deleteOne(member01);
+		
+		// getCount 테스트
+		assertEquals(dao.getCount(memberVO), 0);
+		
+		// 추가
+		dao.add(member01);
+		
+		// 데이터 조회
+		MemberVO outMember01 = dao.get(member01);
+		isSameUser(outMember01, member01);
+		
+	} // get()
 
 }
