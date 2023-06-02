@@ -2,7 +2,8 @@ package com.pcwk.ehr.post;
 
 import com.pcwk.ehr.cmn.PostDTO;
 
-public class PostVO extends PostDTO {
+public class BoardPostDTO extends PostDTO{
+	
 	private String seq; // 게시글 ID
 	private String id; // 회원 ID
 	private String title; // 제목
@@ -13,23 +14,10 @@ public class PostVO extends PostDTO {
 	private String regDt; // 등록일
 	private String modDt; // 수정일
 	private int likeCnt; // 좋아요 수
-
-	public PostVO() {
-	}
 	
+	public BoardPostDTO() {}
 
-	public PostVO(String seq, String id, String title, int div, String contents, String regDt) {
-		super();
-		this.seq = seq;
-		this.id = id;
-		this.title = title;
-		this.div = div;
-		this.contents = contents;
-	}
-	
-	
-
-	public PostVO(String seq, String id, String title, int readCnt, String atchFileId, int div, String contents,
+	public BoardPostDTO(String seq, String id, String title, int readCnt, String atchFileId, int div, String contents,
 			String regDt, String modDt, int likeCnt) {
 		super();
 		this.seq = seq;
@@ -43,7 +31,6 @@ public class PostVO extends PostDTO {
 		this.modDt = modDt;
 		this.likeCnt = likeCnt;
 	}
-
 
 	public String getSeq() {
 		return seq;
@@ -127,9 +114,14 @@ public class PostVO extends PostDTO {
 
 	@Override
 	public String toString() {
-		return "PostVO [seq=" + seq + ", id=" + id + ", title=" + title + ", readCnt=" + readCnt + ", atchFileId="
+		return "BoardPostDTO [seq=" + seq + ", id=" + id + ", title=" + title + ", readCnt=" + readCnt + ", atchFileId="
 				+ atchFileId + ", div=" + div + ", contents=" + contents + ", regDt=" + regDt + ", modDt=" + modDt
-				+ ", likeCnt=" + likeCnt + ", toString()=" + super.toString() + "]";
+				+ ", likeCnt=" + likeCnt + "]";
 	}
+
+
+	
+	
+	
 
 }

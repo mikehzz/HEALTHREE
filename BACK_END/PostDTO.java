@@ -1,4 +1,4 @@
-package com.pcwk.ehr;
+package com.pcwk.ehr.cmn;
 
 public class PostDTO {
 	
