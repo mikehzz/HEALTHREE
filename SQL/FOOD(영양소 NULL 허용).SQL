@@ -6,7 +6,7 @@ DROP TABLE FOOD
 
 /* 식품 */
 CREATE TABLE FOOD (
-	f_code CHAR(7) NOT NULL, /* 식품코드 */
+	f_code VARCHAR2(8) NOT NULL, /* 식품코드 */
 	f_name VARCHAR2(50) NOT NULL, /* 식품명 */
 	f_size NUMBER(4) NOT NULL, /* 총내용량 */
 	f_cal NUMBER(6, 2) NOT NULL, /* 칼로리 */

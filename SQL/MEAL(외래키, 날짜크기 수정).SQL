@@ -10,7 +10,7 @@ CREATE TABLE MEAL (
 	m_date CHAR(10 BYTE) NOT NULL, /* 날짜 */
 	m_div CHAR(1) NOT NULL, /* 식사구분 */
 	m_seq NUMBER(2) NOT NULL, /* 입력순서 */
-	f_code CHAR(7) NOT NULL /* 식품코드 */
+	f_code VARCHAR2(8) NOT NULL /* 식품코드 */
 );
 
 COMMENT ON TABLE MEAL IS '식사';
