@@ -1,6 +1,6 @@
-package com.pcwk.ehr.post;
+package com.pcwk.ehr;
 
-import com.pcwk.ehr.cmn.PostDTO;
+import com.pcwk.ehr.PostDTO;
 
 public class PostVO extends PostDTO {
 	private String seq; // 게시글 ID
@@ -18,7 +18,7 @@ public class PostVO extends PostDTO {
 	}
 	
 
-	public PostVO(String seq, String id, String title, int div, String contents, String regDt) {
+	public PostVO(String seq, String id, String title, int div, String contents) {
 		super();
 		this.seq = seq;
 		this.id = id;
