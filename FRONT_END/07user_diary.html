@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="top2.css">
+  <title>식단 다이어리</title>
+  <style>
+    body {
+      background-color: #F2F5FA;
+    }
+    .diary-container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #4D7AF9;
+      font-size: 25px;
+    }
+    .diary-button {
+      display: block;
+      width: 200px;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background-color: #A9C7F7;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      background-image: url(https://cdn-icons-png.flaticon.com/512/7598/7598663.png);
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 20px 20px;
+      padding-left: 30px;
+    }
+    .diary-entry {
+      display: none;
+      margin-top: 20px;
+    }
+    .diary-entry textarea {
+      width: 100%;
+      height: 100px;
+      resize: none;
+      border: 1px solid #A9C7F7;
+      border-radius: 5px;
+      padding: 5px;
+    }
+    .diary-entry button {
+      margin-top: 10px;
+      background-color: #A9C7F7;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      float: right;
+    }  
+  </style>
+</head>
+<body>
+ <header>
+      <nav>
+        <ul class="top">
+          <li class="top_menu"><a href="Home.html" class="top_name">홈</a></li>
+          <li class="top_menu"><a href="Calendar.html" class="top_name">다이어리</a></li>
+          <li class="top_menu"><a href="post.html" class="top_name">커뮤니티</a></li>
+          <li class="top_menu"><a href="user_mypage_01.html" class="top_name">마이 페이지</a></li>
+          <li class="top_menu"><a href="QnA.html" class="top_name">문의하기</a></li>
+          <li class="top_menu" style="margin-left: auto;"><a class="top_name" id="logoutBtn">로그아웃</a></li>
+        </ul>
+      </nav>
+    </header> 
+  <div class="diary-container">
+    <h2>아침식사</h2>
+    <button class="diary-button" onclick="toggleDiary(1)">항목 추가하기</button>
+    <div id="diary-entry-1" class="diary-entry">
+      <textarea id="diary-text-1" rows="4" cols="50"></textarea>
+      <button onclick="saveDiary(1)">저장</button>
+      <p id="diary-display-1"></p>
+    </div>
+    <h2>점심식사</h2>
+    <button class="diary-button" onclick="toggleDiary(2)">항목 추가하기</button>
+    <div id="diary-entry-2" class="diary-entry">
+      <textarea id="diary-text-2" rows="4" cols="50"></textarea>
+      <button onclick="saveDiary(2)">저장</button>
+      <p id="diary-display-2"></p>
+    </div>
+    <h2>저녁식사</h2>
+    <button class="diary-button" onclick="toggleDiary(3)">항목 추가하기</button>
+    <div id="diary-entry-3" class="diary-entry">
+      <textarea id="diary-text-3" rows="4" cols="50"></textarea>
+      <button onclick="saveDiary(3)">저장</button>
+      <p id="diary-display-3"></p>
+    </div>
+    <h2>간식/기타</h2>
+    <button class="diary-button" onclick="toggleDiary(4)">항목 추가하기</button>
+    <div id="diary-entry-4" class="diary-entry">
+      <textarea id="diary-text-4" rows="4" cols="50"></textarea>
+      <button onclick="saveDiary(4)">저장</button>
+      <p id="diary-display-4"></p>
+    </div>
+  </div>
+  <script>
+    function toggleDiary(entryNumber) {
+      var diaryEntry = document.getElementById("diary-entry-" + entryNumber);
+      if (diaryEntry.style.display === "none") {
+        diaryEntry.style.display = "block";
+      } else {
+        diaryEntry.style.display = "none";
+      }
+    }
+    function saveDiary(entryNumber) {
+      var diaryText = document.getElementById("diary-text-" + entryNumber).value;
+      var diaryDisplay = document.getElementById("diary-display-" + entryNumber);
+      diaryDisplay.innerText = diaryText;
+    }
+  </script>
+</body>
+</html>

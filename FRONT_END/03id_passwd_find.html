@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+    <title>계정 찾기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        input[type="email"],
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+        
+        .login-link {
+            text-align: right;
+            margin-top: 10px;
+        }
+        
+        .login-link a {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .login-link a:hover {
+            background-color: #555;
+        }
+    </style>
+    
+    <script>
+    
+    // JavaScript 아이디 찾기 코드
+    document.addEventListener("DOMContentLoaded", function() {
+        var findAccountForm = document.getElementById("findAccountForm");
+        findAccountForm.addEventListener("submit", function(event) {
+            event.preventDefault(); // 폼 제출을 막음
+
+            // 계정을 찾는 서버 측 요청을 수행
+            // 아래 코드를 실제 구현으로 대체해야 합니다.
+
+            // 성공적인 응답을 시뮬레이션하기 위해 setTimeout 함수를 사용합니다.
+            setTimeout(function() {
+                var name = document.getElementById("name").value;
+                alert("당신의 계정은 " + name + " 입니다."); // 계정 메시지를 표시합니다.
+                findAccountForm.reset(); // 폼을 초기화합니다.
+            }, 1000);
+        });
+    });
+    
+        // JavaScript 비밀번호 찾기 코드
+        document.addEventListener("DOMContentLoaded", function() {
+            var findPasswordForm = document.getElementById("findPasswordForm");
+            findPasswordForm.addEventListener("submit", function(event) {
+                event.preventDefault(); // 폼 제출을 막음
+
+                // 비밀번호를 찾고 이메일을 보내는 서버 측 요청을 수행
+                // 아래 코드를 실제 구현으로 대체해야 합니다.
+
+                // 성공적인 응답을 시뮬레이션하기 위해 setTimeout 함수를 사용합니다.
+                setTimeout(function() {
+                    alert("메일로 임시 비밀번호를 보내드렸습니다. \n로그인 화면으로 이동합니다."); // 성공 메시지를 표시합니다.
+                    findPasswordForm.reset(); // 폼을 초기화합니다.
+                    
+                    window.location.href = "Login.html"; // Login.html로 이동합니다.
+                }, 1000);
+            });
+        });
+    </script>
+    
+</head>
+<body>
+    <h1>아이디 찾기</h1>
+    <form action="/find_account" method="post" id="findAccountForm">
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <input type="submit" value="아이디 찾기">
+        
+        <div class="login-link">
+            <a href="Login.html">로그인</a>
+        </div>
+    </form>
+    
+    <h1>비밀번호 찾기</h1>
+    <form action="/find_password" method="post" id="findPasswordForm">
+        <label for="id">아이디:</label>
+        <input type="text" id="id" name="id" required><br><br>
+        
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <input type="submit" value="비밀번호 찾기">
+        
+        <div class="login-link">
+            <a href="Login.html">로그인</a>
+        </div>
+    </form>
+</body>
+</html>
