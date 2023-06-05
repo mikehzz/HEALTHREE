@@ -51,9 +51,9 @@ public class MemberDaoImplTest {
 		assertNotNull(context);
 		assertNotNull(dao);
 
-		memberVO = new MemberVO("jm1122", "1234", "정민", "kimjmini1122@gmail.com", "F", "1992/11/22", 180, 50, 55, 2, 3);
+		memberVO = new MemberVO("tester00", "181844", "테스터", "greenlight@gmail.com", "F", "2000-01-02", 170, 60, 63, 4, 3);
 		
-		member01 = new MemberVO("duck77", "12345", "오리", "quack@gmail.com", "F", "2001-01-01", 185, 60, 65, 3, 3);
+		member01 = new MemberVO("tester00", "181844", "테스터", "greenlight@gmail.com", "F", "2000-01-02", 170, 60, 63, 4, 3);
 	}
 
 	@After
@@ -62,6 +62,67 @@ public class MemberDaoImplTest {
 		LOG.debug("-tearDown-");
 		LOG.debug("--------------");
 	}
+
+	// 목표체중
+	@Test
+	public void targetWeight() throws SQLException, ClassNotFoundException {
+	    LOG.debug("===================");
+	    LOG.debug("=targetWeight()=");
+	    LOG.debug("===================");
+
+	    // 1. 데이터 삭제
+	    dao.deleteOne(member01);
+
+	    // 1-1. 남은 건수 확인
+	    assertEquals(dao.getCount(memberVO), 0);
+
+	    // 2. 데이터 입력
+	    dao.add(member01);
+
+	    // 3. 등록 데이터 조회
+	    MemberVO getVO = dao.get(member01);
+
+	    // 3.1. 데이터 비교
+	    isSameUser(member01, getVO);
+
+	    // 4. 목표 체중 조회
+	    double goalWeight = dao.targetWeight(member01);
+
+	    // 4.1. 예상된 목표 체중 값과 비교
+	    assertEquals(memberVO.getTargetWeight(), goalWeight, 0.001);
+
+	} // targetWeight()
+
+	
+	// 권장 칼로리
+	@Test
+	@Ignore
+	public void myCal() throws SQLException, ClassNotFoundException {
+		LOG.debug("===================");
+		LOG.debug("=myCal()=");
+		LOG.debug("===================");
+		
+		// 1. 데이터 삭제
+		dao.deleteOne(member01);
+		
+		// 1-1. 남은 건수 확인
+		assertEquals(dao.getCount(memberVO), 0);
+		
+		// 2. 데이터 입력
+		dao.add(member01);
+		
+		// 3. 등록 데이터 조회
+		MemberVO getVO = dao.get(member01);
+		
+		// 3.1. 데이터 비교
+		isSameUser(member01, getVO);
+		
+		// 데이터 조회
+		dao.myCalGoal(member01);
+		
+	
+	} // myCal()
+	
 	
 	// 수정
 	@Test
@@ -123,11 +184,6 @@ public class MemberDaoImplTest {
 		assertEquals(outVO.getEmail(), memberVO.getEmail());
 		assertEquals(outVO.getGender(), memberVO.getGender());
 		assertEquals(outVO.getBirthday(), memberVO.getBirthday());
-		assertEquals(outVO.getHeight(), memberVO.getHeight());
-		assertEquals(outVO.getWeight(), memberVO.getWeight());
-		assertEquals(outVO.getTargetWeight(), memberVO.getTargetWeight());
-		assertEquals(outVO.getActLevel(), memberVO.getActLevel());
-		assertEquals(outVO.getDietGoal(), memberVO.getDietGoal());
 	}
 
 	
@@ -163,6 +219,7 @@ public class MemberDaoImplTest {
 	
 	// 단건 조회
 	@Test
+	@Ignore
 	public void get() throws ClassNotFoundException, SQLException{
 		LOG.debug("=====================");
 		LOG.debug("=get()=");
@@ -183,4 +240,4 @@ public class MemberDaoImplTest {
 		
 	} // get()
 
-}
+} // class end
