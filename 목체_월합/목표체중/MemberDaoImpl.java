@@ -30,7 +30,7 @@ public class MemberDaoImpl implements MemberDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	// 목표체중 조회
+	// 목표체중
 	@Override
 	public double targetWeight(MemberVO member) throws SQLException {
 	    StringBuilder sb = new StringBuilder(200);
@@ -52,10 +52,8 @@ public class MemberDaoImpl implements MemberDao {
 
 	    LOG.debug("3. 목표 체중 = " + goalWeight);
 
-	    return goalWeight;
-	    
-	} // targetWeight()
-	
+	    return goalWeight != null ? goalWeight : 0.0;
+	}
 
 	// 권장 칼로리
 	public MemberVO myCalGoal(MemberVO member) throws ClassNotFoundException, SQLException {
@@ -328,4 +326,4 @@ public class MemberDaoImpl implements MemberDao {
 		return flag;
 	}
 
-} // class end
+}

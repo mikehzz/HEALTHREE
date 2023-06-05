@@ -63,35 +63,35 @@ public class MemberDaoImplTest {
 		LOG.debug("--------------");
 	}
 
-	// 목표체중
-	@Test
-	public void targetWeight() throws SQLException, ClassNotFoundException {
-	    LOG.debug("===================");
-	    LOG.debug("=targetWeight()=");
-	    LOG.debug("===================");
-
-	    // 1. 데이터 삭제
-	    dao.deleteOne(member01);
-
-	    // 1-1. 남은 건수 확인
-	    assertEquals(dao.getCount(memberVO), 0);
-
-	    // 2. 데이터 입력
-	    dao.add(member01);
-
-	    // 3. 등록 데이터 조회
-	    MemberVO getVO = dao.get(member01);
-
-	    // 3.1. 데이터 비교
-	    isSameUser(member01, getVO);
-
-	    // 4. 목표 체중 조회
-	    double goalWeight = dao.targetWeight(member01);
-
-	    // 4.1. 예상된 목표 체중 값과 비교
-	    assertEquals(memberVO.getTargetWeight(), goalWeight, 0.001);
-
-	} // targetWeight()
+		// 목표체중
+		@Test
+		public void targetWeight() throws SQLException, ClassNotFoundException {
+		    LOG.debug("===================");
+		    LOG.debug("=targetWeight()=");
+		    LOG.debug("===================");
+	
+		    // 1. 데이터 삭제
+		    dao.deleteOne(member01);
+	
+		    // 1-1. 남은 건수 확인
+		    assertEquals(dao.getCount(memberVO), 0);
+	
+		    // 2. 데이터 입력
+		    dao.add(member01);
+	
+		    // 3. 등록 데이터 조회
+		    MemberVO getVO = dao.get(member01);
+	
+		    // 3.1. 데이터 비교
+		    isSameUser(member01, getVO);
+	
+		    // 4. 목표 체중 조회
+		    double goalWeight = dao.targetWeight(member01);
+	
+		    // 4.1. 예상된 목표 체중 값과 비교
+		    assertEquals(63.0, goalWeight, 0.001);
+	
+		}
 
 	
 	// 권장 칼로리
@@ -240,4 +240,4 @@ public class MemberDaoImplTest {
 		
 	} // get()
 
-} // class end
+}

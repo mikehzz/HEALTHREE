@@ -22,7 +22,7 @@ public interface MemberDao {
 	// 회원가입
 	int add(MemberVO member) throws ClassNotFoundException, SQLException;
 	
-	// 목표체중 조회
+	// 목표체중
 	double targetWeight(MemberVO member) throws SQLException;
 
 }
