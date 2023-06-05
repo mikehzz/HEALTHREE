@@ -29,7 +29,117 @@ public class MemberDaoImpl implements MemberDao {
 		// 수동으로 DI
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
+	
+	// 목표체중 조회
+	@Override
+	public double targetWeight(MemberVO member) throws SQLException {
+	    StringBuilder sb = new StringBuilder(200);
+	    sb.append("SELECT                 \n");
+	    sb.append("    m_target_weight    \n");
+	    sb.append("FROM                   \n");
+	    sb.append("    member             \n");
+	    sb.append("WHERE                  \n");
+	    sb.append("    m_id = ?           \n");
 
+	    LOG.debug("1. sql = \n" + sb.toString());
+	    LOG.debug("2. param = \n" + member.getId());
+
+	    // param
+	    Object[] args = { member.getId() };
+
+	    // jdbcTemplate
+	    Double goalWeight = this.jdbcTemplate.queryForObject(sb.toString(), args, Double.class);
+
+	    LOG.debug("3. 목표 체중 = " + goalWeight);
+
+	    return goalWeight;
+	    
+	} // targetWeight()
+	
+
+	// 권장 칼로리
+	public MemberVO myCalGoal(MemberVO member) throws ClassNotFoundException, SQLException {
+
+		MemberVO outVO = null;
+		
+		StringBuilder sb = new StringBuilder(500);
+		sb.append(" SELECT                                                                                                                                                                        \n ");
+		sb.append("   CASE                                                                                                                                                                        \n ");
+		sb.append("     WHEN m_diet_goal = 1 THEN ROUND(                                                                                                                                          \n ");
+		sb.append("       (                                                                                                                                                                       \n ");
+		sb.append("         (                                                                                                                                                                     \n ");
+		sb.append("           DECODE(                                                                                                                                                             \n ");
+		sb.append("             m_gender,                                                                                                                                                         \n ");
+		sb.append("             'F',                                                                                                                                                              \n ");
+		sb.append("             (10 * m_weight) + (6.25 * m_height) - (5 * (SELECT TRUNC(MONTHS_BETWEEN(TRUNC(SYSDATE), (SELECT m_birthday FROM member WHERE m_id = ?)) / 12) FROM DUAL)) - 161,  \n ");
+		sb.append("             'M',                                                                                                                                                              \n ");
+		sb.append("             (10 * m_weight) + (6.25 * m_height) - (5 * (SELECT TRUNC(MONTHS_BETWEEN(TRUNC(SYSDATE), (SELECT m_birthday FROM member WHERE m_id = ?)) / 12) FROM DUAL)) + 5     \n ");
+		sb.append("           )                                                                                                                                                                   \n ");
+		sb.append("         ) * DECODE(m_act_lv, 1, 1.2, 2, 1.375, 3, 1.55, 4, 1.725)                                                                                                             \n ");
+		sb.append("       ) - 500,                                                                                                                                                                \n ");
+		sb.append("       2                                                                                                                                                                       \n ");
+		sb.append("     )                                                                                                                                                                         \n ");
+		sb.append("     WHEN m_diet_goal = 3 THEN ROUND(                                                                                                                                          \n ");
+		sb.append("       (                                                                                                                                                                       \n ");
+		sb.append("         (                                                                                                                                                                     \n ");
+		sb.append("           DECODE(                                                                                                                                                             \n ");
+		sb.append("             m_gender,                                                                                                                                                         \n ");
+		sb.append("             'F',                                                                                                                                                              \n ");
+		sb.append("             (10 * m_weight) + (6.25 * m_height) - (5 * (SELECT TRUNC(MONTHS_BETWEEN(TRUNC(SYSDATE), (SELECT m_birthday FROM member WHERE m_id = ?)) / 12) FROM DUAL)) - 161,  \n ");
+		sb.append("             'M',                                                                                                                                                              \n ");
+		sb.append("             (10 * m_weight) + (6.25 * m_height) - (5 * (SELECT TRUNC(MONTHS_BETWEEN(TRUNC(SYSDATE), (SELECT m_birthday FROM member WHERE m_id = ?)) / 12) FROM DUAL)) + 5     \n ");
+		sb.append("           )                                                                                                                                                                   \n ");
+		sb.append("         ) * DECODE(m_act_lv, 1, 1.2, 2, 1.375, 3, 1.55, 4, 1.725)                                                                                                             \n ");
+		sb.append("       ) + 500,                                                                                                                                                                \n ");
+		sb.append("       2                                                                                                                                                                       \n ");
+		sb.append("     )                                                                                                                                                                         \n ");
+		sb.append("     ELSE ROUND(                                                                                                                                                               \n ");
+		sb.append("       (                                                                                                                                                                       \n ");
+		sb.append("         (                                                                                                                                                                     \n ");
+		sb.append("           DECODE(                                                                                                                                                             \n ");
+		sb.append("             m_gender,                                                                                                                                                         \n ");
+		sb.append("             'F',                                                                                                                                                              \n ");
+		sb.append("             (10 * m_weight) + (6.25 * m_height) - (5 * (SELECT TRUNC(MONTHS_BETWEEN(TRUNC(SYSDATE), (SELECT m_birthday FROM member WHERE m_id = ?)) / 12) FROM DUAL)) - 161,  \n ");
+		sb.append("             'M',                                                                                                                                                              \n ");
+		sb.append("             (10 * m_weight) + (6.25 * m_height) - (5 * (SELECT TRUNC(MONTHS_BETWEEN(TRUNC(SYSDATE), (SELECT m_birthday FROM member WHERE m_id = ?)) / 12) FROM DUAL)) + 5     \n ");
+		sb.append("           )                                                                                                                                                                   \n ");
+		sb.append("         ) * DECODE(m_act_lv, 1, 1.2, 2, 1.375, 3, 1.55, 4, 1.725)                                                                                                             \n ");
+		sb.append("       ),                                                                                                                                                                      \n ");
+		sb.append("       2                                                                                                                                                                       \n ");
+		sb.append("     )                                                                                                                                                                         \n ");
+		sb.append("   END AS recommended_calories                                                                                                                                                 \n ");
+		sb.append(" FROM member                                                                                                                                                                   \n ");
+		sb.append(" WHERE m_id = ?																																								  \n ");
+		
+		LOG.debug("1. sql = \n" + sb.toString());
+		LOG.debug("2. param = \n" + member);
+		
+		
+		// param
+		Object[] args = { member.getId(), member.getId(), member.getId(), 
+				member.getId(), member.getId(), member.getId(), member.getId() };
+		
+		outVO = this.jdbcTemplate.queryForObject(sb.toString(), new RowMapper<MemberVO>() {
+
+	            @Override
+	            public MemberVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+	               
+	            	MemberVO out = new MemberVO();
+
+	               out.setMyCalory(rs.getDouble("recommended_calories"));
+
+	               return out;
+	            }
+
+         }, args);
+
+         LOG.debug("3.outVO:" + outVO);
+         
+         return outVO;
+		
+	} // myCalGoal()
+	
+	
 	// 건수 조회
 	@Override
 	@SuppressWarnings("deprecation") // queryForObject에 대한 메시지 제거
@@ -53,6 +163,7 @@ public class MemberDaoImpl implements MemberDao {
 
 		return cnt;
 	}
+	
 
 	// 회원정보 조회
 	@Override
@@ -217,4 +328,4 @@ public class MemberDaoImpl implements MemberDao {
 		return flag;
 	}
 
-}
+} // class end
