@@ -1,4 +1,4 @@
-package com.pcwk.ehr;
+	package com.pcwk.ehr;
 
 import static org.junit.Assert.*;
 
@@ -39,6 +39,12 @@ public class MealDaoImplTest {
 	MealVO meal02;
 	MealVO meal03;
 	MealVO meal04;
+	MealVO meal05;
+	MealVO meal06;
+	MealVO meal07;
+	MealVO meal08;
+	MealVO meal09;
+	MealVO meal10;
 
 	@Before
 	public void setUp() {
@@ -52,25 +58,32 @@ public class MealDaoImplTest {
 		assertNotNull(context);
 		assertNotNull(dao);
 
-		mealVO = new MealVO("duck77", "2023-05-30", "D", 1, "D000237");
+		mealVO = new MealVO("tester00", "20230522", "B", 1, "D00001");
 
-		meal01 = new MealVO("duck77", "2023-05-30", "D", 1, "D000237");
-		meal02 = new MealVO("duck77", "2023-05-30", "D", 2, "D000474");
-		meal03 = new MealVO("duck77", "2023-05-30", "M", 1, "D000474");
-		meal04 = new MealVO("duck77", "2023-05-31", "L", 1, "D000237");
+		meal01 = new MealVO("tester00", "20230522", "B", 1, "D00001");
+		meal02 = new MealVO("tester00", "20230522", "B", 2, "D00002");
+		meal03 = new MealVO("tester00", "20230522", "B", 3, "D00003");
+		meal04 = new MealVO("tester00", "20230522", "D", 1, "D00007");
+		meal05 = new MealVO("tester00", "20230522", "D", 2, "D00008");
+		meal06 = new MealVO("tester00", "20230522", "D", 3, "D00009");
+		meal07 = new MealVO("tester00", "20230522", "L", 1, "D00004");
+		meal08 = new MealVO("tester00", "20230522", "L", 2, "D00005");
+		meal09 = new MealVO("tester00", "20230522", "L", 3, "D00006");
+		meal10 = new MealVO("tester00", "20230522", "S", 1, "D00010");
+
 	}
 
 	@After
 	public void tearDown() {
 		LOG.debug("--------------");
 		LOG.debug("-tearDown-");
-
 		LOG.debug("--------------");
 	}
 
-	// div+seq+코드 조회
+	
+	// 회원ID, 날짜까지 선택 후 식단 조회
 	@Test
-	@Ignore
+	//@Ignore
 	public void getDivSeqFoodCode() throws ClassNotFoundException, SQLException {
 		LOG.debug("=====================");
 		LOG.debug("=getDivSeqFoodCode()==");
@@ -79,8 +92,8 @@ public class MealDaoImplTest {
 		// getDivSeqFoodCode()
 		List<MealVO> list = dao.getDivSeqFoodCode(mealVO);
 		
-		// 3건 확인
-		assertEquals(list.size(), 3);
+		// 10건 확인
+		assertEquals(list.size(), 10);
 		for (MealVO vo : list) {
 			LOG.debug(vo.toString());
 		}
@@ -89,9 +102,16 @@ public class MealDaoImplTest {
 		isSameMeal(meal01, list.get(0));
 		isSameMeal(meal02, list.get(1));
 		isSameMeal(meal03, list.get(2));
+		isSameMeal(meal04, list.get(3));
+		isSameMeal(meal05, list.get(4));
+		isSameMeal(meal06, list.get(5));
+		isSameMeal(meal07, list.get(6));
+		isSameMeal(meal08, list.get(7));
+		isSameMeal(meal09, list.get(8));
+		isSameMeal(meal10, list.get(9));
 	}
 
-	// seq+코드 조회
+	// 회원ID, 날짜, 식사구분까지 선택 후 식단 조회
 	@Test
 	//@Ignore
 	public void getSeqFoodCode() throws ClassNotFoundException, SQLException {
@@ -102,8 +122,8 @@ public class MealDaoImplTest {
 		// getSeqFoodCode()
 		List<MealVO> list = dao.getSeqFoodCode(mealVO);
 
-		// 2건 확인
-		assertEquals(list.size(), 2);
+		// 3건 확인
+		assertEquals(list.size(), 3);
 		for (MealVO vo : list) {
 			LOG.debug(vo.toString());
 		}
@@ -111,13 +131,13 @@ public class MealDaoImplTest {
 		// 비교
 		isSameMeal(meal01, list.get(0));
 		isSameMeal(meal02, list.get(1));
-
+		isSameMeal(meal03, list.get(2));
 
 	}
 
-	// 코드조회
+	// 회원ID, 날짜, 식사구분, SEQ까지 선택 후 식단 조회 (단 건 조회)
 	@Test
-	@Ignore
+	//@Ignore
 	public void getFoodCode() throws ClassNotFoundException, SQLException {
 		LOG.debug("=====================");
 		LOG.debug("=getFoodCode()==");
@@ -151,7 +171,6 @@ public class MealDaoImplTest {
 		dao.deleteOne(meal01);
 		dao.deleteOne(meal02);
 		dao.deleteOne(meal03);
-		dao.deleteOne(meal04);
 
 	}
 
@@ -167,13 +186,11 @@ public class MealDaoImplTest {
 		dao.deleteOne(meal01);
 		dao.deleteOne(meal02);
 		dao.deleteOne(meal03);
-		dao.deleteOne(meal04);
 
 		// 추가
 		dao.add(meal01);
 		dao.add(meal02);
 		dao.add(meal03);
-		dao.add(meal04);
 	}
 
 }
