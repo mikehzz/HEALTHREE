@@ -7,17 +7,18 @@ public class MemberVO extends MemberDTO {
 	private String email; // 이메일
 	private String gender; // 성별 ('M', 'F')
 	private String birthday; // 생년월일
-	private int height; // 신장
-	private int weight; // 현재 체중
-	private int targetWeight; // 목표 체중
+	private double height; // 신장
+	private double weight; // 현재 체중
+	private double targetWeight; // 목표 체중
 	private int actLevel; // 활동 레벨 (1 낮음, 2 보통, 3 높음, 4 매우 높음)
 	private int dietGoal; // 다이어트 목표 (1 감량, 2 유지, 3 증량)
+	private double myCalory; // 권장 칼로리;
 
 	public MemberVO() {
 	}
 
-	public MemberVO(String id, String pw, String name, String email, String gender, String birthday, int height,
-			int weight, int targetWeight, int actLevel, int dietGoal) {
+	public MemberVO(String id, String pw, String name, String email, String gender, String birthday, double height,
+			double weight, double targetWeight, int actLevel, int dietGoal) {
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -80,27 +81,27 @@ public class MemberVO extends MemberDTO {
 		this.birthday = birthday;
 	}
 
-	public int getHeight() {
+	public double getHeight() {
 		return height;
 	}
 
-	public void setHeight(int height) {
+	public void setHeight(double height) {
 		this.height = height;
 	}
 
-	public int getWeight() {
+	public double getWeight() {
 		return weight;
 	}
 
-	public void setWeight(int weight) {
+	public void setWeight(double weight) {
 		this.weight = weight;
 	}
 
-	public int getTargetWeight() {
+	public double getTargetWeight() {
 		return targetWeight;
 	}
 
-	public void setTargetWeight(int targetWeight) {
+	public void setTargetWeight(double targetWeight) {
 		this.targetWeight = targetWeight;
 	}
 
@@ -119,13 +120,21 @@ public class MemberVO extends MemberDTO {
 	public void setDietGoal(int dietGoal) {
 		this.dietGoal = dietGoal;
 	}
+	
+
+	public double getMyCalory() {
+		return myCalory;
+	}
+
+	public void setMyCalory(double myCalory) {
+		this.myCalory = myCalory;
+	}
 
 	@Override
 	public String toString() {
-		return "meberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", gender=" + gender
+		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", gender=" + gender
 				+ ", birthday=" + birthday + ", height=" + height + ", weight=" + weight + ", targetWeight="
-				+ targetWeight + ", actLevel=" + actLevel + ", dietGoal=" + dietGoal + ", toString()="
-				+ super.toString() + "]";
-	}
+				+ targetWeight + ", actLevel=" + actLevel + ", dietGoal=" + dietGoal + ", myCalory=" + myCalory + "]";
+	}	
 
 }
