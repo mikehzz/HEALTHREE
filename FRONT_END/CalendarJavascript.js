@@ -59,7 +59,7 @@ const renderCalendar = () => { // 달력 렌더링: 현재 날짜의 연도와 �
   const addDataToCell = (button) => {
     const dateValue = button.innerText;
     console.log(`Data added to cell: ${dateValue}`);
-    window.location.href = 'diary.html';
+    window.location.href = '07user_diary.html';
   };
 
   const dateButtons = document.querySelectorAll('.date');

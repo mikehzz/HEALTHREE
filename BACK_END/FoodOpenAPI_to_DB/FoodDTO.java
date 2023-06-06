@@ -15,7 +15,7 @@ public class FoodDTO extends DTO {
 	private float f_sugar;		//당류
 	private float f_na;		//나트륨
 	private float f_cole;		//콜레스테롤
-	
+
 	public FoodDTO() {}
 
 	public FoodDTO(String f_code, String f_name, float f_size, float f_cal, float f_carbo, float f_protein, float f_fat,
@@ -121,11 +121,11 @@ public class FoodDTO extends DTO {
 	}
 
 
-	
 
 
 
 
-	
+
+
 
 }
