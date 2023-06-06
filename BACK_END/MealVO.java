@@ -2,7 +2,7 @@ package com.pcwk.ehr;
 
 public class MealVO extends MealDTO {
 	private String id; // 회원 ID
-	private String date; // 날짜: YYYY-MM-DD
+	private String date; // 날짜: YYYYMMDD
 	private String div; // 식사 구분: 아침(B)/점심(L)/저녁(D)/간식(S)
 	private int seq; // 입력 순서: 1, 2, 3
 	private String code; // 식품 코드

@@ -31,8 +31,8 @@ public class MealDaoImpl implements MealDao {
 		// 수동으로 DI
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-
-	// 회원ID, 날짜까지 선택 후 조회
+	
+	// 회원ID, 날짜까지 선택 후 식단 조회
 	@Override
 	public List<MealVO> getDivSeqFoodCode(MealVO meal) throws ClassNotFoundException, SQLException {
 		List<MealVO> outList = new ArrayList<>();
@@ -77,7 +77,7 @@ public class MealDaoImpl implements MealDao {
 		return outList;
 	}
 
-	// 회원ID, 날짜, 식사구분까지 선택 후 조회
+	// 회원ID, 날짜, 식사구분까지 선택 후 식단 조회
 	@Override
 	public List<MealVO> getSeqFoodCode(MealVO meal) throws SQLException {
 		List<MealVO> outList = new ArrayList<>();
@@ -121,7 +121,7 @@ public class MealDaoImpl implements MealDao {
 		return outList;
 	}
 
-	// 회원ID, 날짜, 식사구분, SEQ까지 선택 후 입력한 음식코드 조회 (단 건 조회)
+	// 회원ID, 날짜, 식사구분, SEQ까지 선택 후 식단 조회 (단 건 조회)
 	@Override
 	public MealVO getFoodCode(MealVO meal) throws ClassNotFoundException, SQLException {
 		MealVO outVO = null;
@@ -172,7 +172,6 @@ public class MealDaoImpl implements MealDao {
 	@Override
 	public int deleteOne(final MealVO meal) throws SQLException {
 		int flag = 0;
-		// ---------------------------------------
 
 		StringBuilder sb = new StringBuilder(50);
 		sb.append(" DELETE FROM meal   \n");
