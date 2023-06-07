@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="top.css">
+<title>고객문의 목록 관리 페이지</title>
+<style>
+
+  h1 {
+    color: #333;
+            font-size: 35px;
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+  }
+
+  th {
+    background-color: #c1e6fe;
+    color: #333;
+  }
+
+  tr:nth-child(even) {
+    background-color: #e6f7ff;
+  }
+
+  button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #9fc7fe;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #82b4f9;
+  }
+
+  .pagination {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .pagination a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: #9fc7fe;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .pagination a:hover {
+    background-color: #82b4f9;
+  }
+
+  .pagination .active {
+    background-color: #007bff;
+  }
+  
+</style>
+</head>
+<body>
+    <header>
+      <nav>
+        <ul class="top">
+          <li class="top_menu"><a href="Home.html" class="top_name">홈</a></li>
+          <li class="top_menu"><a href="Calendar.html" class="top_name">다이어리</a></li>
+          <li class="top_menu"><a href="post.html" class="top_name">커뮤니티</a></li>
+          <li class="top_menu"><a href="user_mypage_01.html" class="top_name">마이 페이지</a></li>
+          <li class="top_menu"><a href="QnA.html" class="top_name">문의하기</a></li>
+          <li class="top_menu" style="margin-left: auto;"><a class="top_name" id="logoutBtn">로그아웃</a></li>
+        </ul>
+      </nav>
+    </header> 
+  
+  <h1>고객문의 목록</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>문의번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>처리여부</th>
+        <th>관리</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>7</td>
+        <td>BLUE MOON</td>
+        <td>효린</td>
+        <td>2023-05-01</td>
+        <td>미처리</td>
+        <td>
+          <button onclick="answerPost(1)">답변하기</button>
+          <button onclick="deletePost(1)">삭제</button>
+        </td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>YOUTH</td>
+        <td>Troye Sivan</td>
+        <td>2023-05-05</td>
+        <td>답변 완료</td>
+        <td>
+          <button onclick="answerPost(2)">답변하기</button>
+          <button onclick="deletePost(2)">삭제</button>
+        </td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>The Ocean</td>
+        <td>Mike Perry</td>
+        <td>2023-05-10</td>
+        <td>미처리</td>
+        <td>
+          <button onclick="answerPost(3)">답변하기</button>
+          <button onclick="deletePost(3)">삭제</button>
+        </td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Lean On</td>
+        <td>Major Lazer</td>
+        <td>2023-05-10</td>
+        <td>답변 완료</td>
+        <td>
+          <button onclick="answerPost(3)">답변하기</button>
+          <button onclick="deletePost(3)">삭제</button>
+        </td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Closer</td>
+        <td>The Chainsmokers</td>
+        <td>2023-05-10</td>
+        <td>미처리</td>
+        <td>
+          <button onclick="answerPost(3)">답변하기</button>
+          <button onclick="deletePost(3)">삭제</button>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Survive</td>
+        <td>Vanze</td>
+        <td>2023-05-10</td>
+        <td>답변 완료</td>
+        <td>
+          <button onclick="answerPost(3)">답변하기</button>
+          <button onclick="deletePost(3)">삭제</button>
+        </td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>these heights</td>
+        <td>Bassjackers</td>
+        <td>2023-05-10</td>
+        <td>미처리</td>
+        <td>
+          <button onclick="answerPost(3)">답변하기</button>
+          <button onclick="deletePost(3)">삭제</button>
+        </td>
+      </tr>
+      <!-- 추가적인 고객 문의 데이터를 여기에 추가 -->
+
+
+    </tbody>
+  </table>
+  <div class="pagination">
+    <a href="#"><</a>
+    <a href="#" class="active">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">></a>
+  </div>
+  
+  <script>
+    function answerPost(postId) {
+      // 해당 문의에 대한 답변 작성 페이지로 이동하는 로직을 구현할 수 있습니다.
+      console.log("Answer post:", postId);
+    }
+
+    function deletePost(postId) {
+      // 해당 문의를 삭제하는 로직을 구현할 수 있습니다.
+      console.log("Delete post:", postId);
+    }
+  </script>
+  <script src="Logout.js"></script>
+</body>
+</html>
