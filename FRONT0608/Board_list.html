@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>                 
+      <meta charset="UTF-8">    
+      <meta name="author" content="JY">  
+      <link rel="stylesheet" href="top.css">
+      <title>자유게시판</title>
+
+      <style>
+       * {
+         font-family: 'nanum-square-neo', sans-serif;
+        }
+  
+       .board_wrap {
+         padding: 20px;
+       }
+      
+       .board_title {
+         margin-bottom: 20px;
+       }
+      
+       .board_title h2 {
+         color:  #88C6FC;
+         font-size: 24px;
+       }
+      
+       .board_title hr {
+         border: none;
+         border-top: 1px solid #a3a7ad;
+         margin-top: 3px;
+         margin-bottom: 5px;
+       }
+      
+       .board_table {
+         width: 100%;
+         border-collapse: collapse;
+         table-layout: fixed;
+         padding: 10px;
+         margin: 10px;
+         margin-bottom: 20px;
+       }
+      
+       .board_table th {
+        padding: 5px;
+        text-align: center;
+        margin-top: 3px; /* 줄이기 */
+        margin-bottom: 15px; /* 늘리기 */
+       }
+       
+       .board_table td {
+         padding: 10px;
+         text-align: center;
+       }
+      
+       .board_table .th_num {
+         width: 10%;
+       }
+      
+       .board_table .th_title {
+         width: 40%;
+       }
+      
+       .board_table .th_reg {
+         width: 10%;
+       }
+      
+       .board_table .th_read,
+       .board_table .th_comm,
+       .board_table .th_like {
+         width: 10%;
+       }
+       
+       .board_table .th_date {
+         width: 15%;
+       }
+      
+       .board_table a {
+         color: #000;
+         text-decoration: none;
+       }
+      
+       .board_search {
+         margin-bottom: 20px;
+       }
+      
+       .search_window {
+         text-align: right;
+       }
+      
+       .search_wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px; /* 변경: 위로 이동 */
+        margin-bottom: 10px; /* 변경: 줄이기 */
+      }
+
+      .search_wrap select {
+        margin-right: 10px;
+      }
+      
+       .search_wrap input[type="search"] {
+         padding: 5px 10px;
+         border: 1px solid #ccc;
+         border-radius: 5px;
+         font-size: 14px;
+         margin-right: 5px;
+       }
+      
+       .search_wrap button {
+         padding: 5px 10px;
+         background-color: #88C6FC;
+         color: #fff;
+         border: none;
+         border-radius: 5px;
+         cursor: pointer;
+         font-size: 14px;
+       }
+      
+       #pg_btn {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        margin-top: 20px;
+       }
+       
+       .board_page{
+         text-align: inherit; 
+         white-space: nowrap;
+         margin:0 auto;
+       }
+      
+       .btn_wrap {
+         margin-top: 20px;
+         text-align: right;
+       }
+      
+       .btn_write,
+       .btn_myPost {
+         display: inline-block;
+         color: #88C6FC;
+       }
+      
+       .btn_write a,
+       .btn_myPost a {
+         padding: 5px 10px;
+         background-color: #000;
+         color: #fff;
+         text-decoration: none;
+         border-radius: 5px;
+         font-size: 14px;
+       }
+      
+       .btn_write a.on,
+       .btn_myPost a.on {
+         background-color: #88C6FC;
+         margin-bottom: 10px; 
+       }
+      
+      .board_page {
+        text-align: center;
+        white-space: nowrap;
+      }
+  
+      .board_page a {
+        display: inline-block;
+        margin-right: 5px;
+        padding: 5px;
+        text-decoration: none;
+      }   
+    </style>
+    </head>
+    <body>
+    <header>
+      <nav>
+        <ul class="top">
+          <li class="top_menu"><a href="Home.html" class="top_name">홈</a></li>
+          <li class="top_menu"><a href="Calendar.html" class="top_name">다이어리</a></li>
+          <li class="top_menu"><a href="post.html" class="top_name">커뮤니티</a></li>
+          <li class="top_menu"><a href="user_mypage_01.html" class="top_name">마이 페이지</a></li>
+          <li class="top_menu"><a href="QnA.html" class="top_name">문의하기</a></li>
+          <li class="top_menu" style="margin-left: auto;"><a class="top_name" id="logoutBtn">로그아웃</a></li>
+        </ul>
+      </nav>
+    </header> 
+      <!-- 게시판 전체 -->
+      <section class="board_wrap">
+        <!-- 게시판 제목 area -->
+        <div class="board_title">
+          <div class="container">
+          
+              <div id="category_section" style="float: right;">
+      <label for="categorySelect">말머리:</label>
+      <select id="categorySelect">
+        <option value="카테고리1">카테고리1</option>
+        <option value="카테고리2">카테고리2</option>
+        <option value="카테고리3">카테고리3</option>
+        <!-- Add more options as needed -->
+      </select>
+    </div>
+    
+            <h2>자유게시판</h2>
+            <hr>
+          </div>
+        </div> 
+        
+        <!-- 글 목록 area -->
+        <div id="board_list_wrap">
+          <div class="container">
+            <table class="board_table">
+              <thead>
+                <tr>
+                  <th scope="col" class="th_num">글번호</th>
+                  <th scope="col" class="th_title">제목</th>
+                  <th scope="col" class="th_reg">작성자</th>
+                  <th scope="col" class="th_read">조회수</th>
+                  <th scope="col" class="th_comm">댓글</th>
+                  <th scope="col" class="th_like">좋아요</th>
+                  <th scope="col" class="th_date">작성일</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                  <td>4</td>
+                  <td><a href="H02_view.html">프로젝트 원 투 쓰리.</a></td>
+                  <td>김지원사</td>
+                  <td>99</td>
+                  <td>11</td>
+                  <td>2</td>
+                  <td>2023.06.03</td>
+                </tr>
+              
+                <tr>
+                  <td>3</td>
+                  <td><a href="H02_view.html">자유게시판입니다.</a></td>
+                  <td>김지원3</td>
+                  <td>33</td>
+                  <td>2</td>
+                  <td>99</td>
+                  <td>2023.05.23</td>
+                </tr>
+      
+                <tr>
+                  <td>2</td>
+                  <td><a href="H02_view.html">오키</a></td>
+                  <td>김지원2</td>
+                  <td>99</td>
+                  <td>22</td>
+                  <td>2</td>
+                  <td>2023.05.22</td>
+                </tr>
+      
+                <tr>
+                  <td>1</td>
+                  <td><a href="H02_view.html">집에 갑시다.</a></td>
+                  <td>김지원1</td>
+                  <td>99</td>
+                  <td>11</td>
+                  <td>2</td>
+                  <td>2023.05.21</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      
+      <div id="pg_btn">
+      <!-- 페이지 번호 area -->
+      <div class="board_page">
+        <a href="#" class="bt first" style="padding:2px;">&lt;&lt;</a>
+        <a href="#" class="bt prev">&lt;</a>
+        <a href="#" class="num on">1</a>
+        <a href="#" class="num">2</a>
+        <a href="#" class="num">3</a>
+        <a href="#" class="num">4</a>
+        <a href="#" class="num">5</a>
+        <a href="#" class="bt next">&gt;</a>
+        <a href="#" class="bt last"  style="padding:2px;">&gt;&gt;</a>
+      </div>
+    
+      <!-- 버튼 영역 -->
+      <div class="btn_wrap">
+        <!-- 글쓰기 버튼 -->
+        <div class="btn_write">
+          <a href="post_create.html" class="on">글쓰기</a>
+        </div>
+        <!-- 내글보기 버튼 -->
+        <div class="btn_myPost">
+          <a href="post_me.html" class="on">내글보기</a>
+        </div>
+      </div>
+    </div>
+      
+      <!-- 검색 area -->
+        <div class="search_wrap">
+        <label for="category" class="blind"></label>
+        <select id="category" name="category">
+          <option value="전체">전체</option>
+          <option value="제목">제목</option>
+          <option value="작성자">작성자</option>
+          <option value="내용">내용</option>
+        </select>
+        <label for="search" class="blind"></label>
+        <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
+        <button type="submit" class="btn btn-dark">검색</button>
+      </div>
+        
+      </section> 
+      <script src="Logout.js"></script>
+  </body>
+</html>

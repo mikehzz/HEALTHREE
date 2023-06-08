@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="top.css">
+<title>커뮤니티 페이지</title>
+<style>
+
+  h1 {
+    color: #333;
+        font-size: 35px;
+        text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+  }
+
+  th {
+    background-color: #c1e6fe;
+    color: #333;
+  }
+
+  tr:nth-child(even) {
+    background-color: #e6f7ff;
+  }
+
+  .highlight-best {
+    background-color: rgb(255, 255, 128);
+  }
+
+  .highlight-notice {
+    background-color: rgb(255, 128, 128);
+  }
+
+  .pagination {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .pagination a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: #9fc7fe;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .comment-count {
+    font-size: 12px;
+    color: #666;
+    margin-left: 5px;
+  }
+
+  .pagination a:hover {
+    background-color: #82b4f9;
+  }
+
+  .pagination .active {
+    background-color: #007bff;
+  }
+
+  .search-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .search-container label {
+    margin-right: 10px;
+  }
+
+  .search-container input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .search-container button {
+    padding: 5px 10px;
+    background-color: #9fc7fe;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .search-container button:hover {
+    background-color: #82b4f9;
+  }
+ 
+  
+       #pg_btn {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        margin-top: 20px;
+       }
+       
+       .board_page{
+         text-align: inherit; 
+         white-space: nowrap;
+         margin:0 auto;
+       }
+      
+       .btn_wrap {
+         margin-top: 20px;
+         text-align: right;
+       }
+      
+       .btn_write,
+       .btn_myPost {
+         display: inline-block;
+         color: #88C6FC;
+       }
+      
+       .btn_write a,
+       .btn_myPost a {
+         padding: 5px 10px;
+         background-color: #000;
+         color: #fff;
+         text-decoration: none;
+         border-radius: 5px;
+         font-size: 14px;
+       }
+      
+       .btn_write a.on,
+       .btn_myPost a.on {
+         background-color: #88C6FC;
+         margin-bottom: 10px; 
+       }
+      
+      .board_page {
+        text-align: center;
+        white-space: nowrap;
+      }
+  
+      .board_page a {
+        display: inline-block;
+        margin-right: 5px;
+        padding: 5px;
+        text-decoration: none;
+      }   
+</style>
+</head>
+<body>
+    <header>
+      <nav>
+        <ul class="top">
+          <li class="top_menu"><a href="Home.html" class="top_name">홈</a></li>
+          <li class="top_menu"><a href="Calendar.html" class="top_name">다이어리</a></li>
+          <li class="top_menu"><a href="post.html" class="top_name">커뮤니티</a></li>
+          <li class="top_menu"><a href="user_mypage_01.html" class="top_name">마이 페이지</a></li>
+          <li class="top_menu"><a href="QnA.html" class="top_name">문의하기</a></li>
+          <li class="top_menu" style="margin-left: auto;"><a class="top_name" id="logoutBtn">로그아웃</a></li>
+        </ul>
+      </nav>
+    </header> 
+<h1>커뮤니티 페이지</h1>
+<div class="search-container">
+
+ </div>
+ <div class="post-container">
+    <div class="post-header">
+   <div id="category_section" style="float: right;">
+  <label for="category-select">말머리:</label>
+  <select id="category-select" onchange="redirectToBoard()">
+    <option value="all">전체</option>
+    <option value="free">자유게시판</option>
+    <option value="humor">유머게시판</option>
+    <option value="boast">자랑게시판</option>
+  </select>
+</div>
+    
+
+    
+    
+    <table>
+  <thead>
+    <tr>
+      <th>글 번호</th>
+      <th>제목 (댓글 수)</th>
+      <th>작성자</th>
+      <th>작성일</th>
+      <th>좋아요</th>
+      <th>조회수</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 글 목록을 표시하기 위한 반복문 예시 -->
+    <tr>
+      <td class="highlight-best">BEST</td>
+      <td>말머리 만들었어! 살려줘<span class="comment-count">(183187)</span></td>
+      <td>수현이형</td>
+      <td>2023-05-30</td>
+      <td>7865156</td>
+      <td>8888888</td>
+    </tr>
+    <tr>
+      <td class="highlight-notice">공지</td>
+      <td>연지공지<span class="comment-count">(7)</span></td>
+      <td>김공지</td>
+      <td>2023-05-29</td>
+      <td>777</td>
+      <td>300</td>
+
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>바이는 바보<span class="comment-count">(52)</span></td>
+      <td>징크스</td>
+      <td>2023-05-28</td>
+      <td>20</td>
+      <td>150</td>
+
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>요즘 정글 수준 왜 이러냐<span class="comment-count">(35)</span></td>
+      <td>티모(0/8/1)</td>
+      <td>2023-05-27</td>
+      <td>10</td>
+      <td>75</td>
+
+    </tr>
+        <tr>
+      <td>3</td>
+      <td>이예~<span class="comment-count">(57)</span></td>
+      <td>나미</td>
+      <td>2023-05-28</td>
+      <td>20</td>
+      <td>150</td>
+
+    </tr>
+        <tr>
+      <td>2</td>
+      <td>집사 구합니다!!!<span class="comment-count">(71)</span></td>
+      <td>유미</td>
+      <td>2023-05-28</td>
+      <td>20</td>
+      <td>150</td>
+
+    </tr>
+        <tr>
+      <td>1</td>
+      <td>하하하하하<span class="comment-count">(51)</span></td>
+      <td>룰루</td>
+      <td>2023-05-28</td>
+      <td>20</td>
+      <td>150</td>
+
+    </tr>
+    <!-- 반복문 끝 -->
+  </tbody>
+</table>
+
+
+
+<div class="pagination">
+  <a href="#"><</a>
+  <a href="#" class="active">1</a>
+  <a href="#">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">></a>
+</div>
+
+<div class="search-container">
+  <select id="search-type">
+    <option value="title">제목</option>
+    <option value="title-content">제목+내용</option>
+  </select>
+  <input type="text" id="search-input" placeholder="검색어를 입력하세요">
+  <button onclick="searchPosts()">검색</button>
+</div>
+
+
+
+<!-- 버튼 영역 -->
+      <div class="btn_wrap">
+        <!-- 글쓰기 버튼 -->
+        <div class="btn_write">
+          <a href="post_create.html" class="on">글쓰기</a>
+        </div>
+        <!-- 내글보기 버튼 -->
+        <div class="btn_myPost">
+          <a href="post_me.html" class="on">내글보기</a>
+        </div>
+      </div>
+    </div>
+
+<script>
+  // 글 수정 기능 예시
+  function editPost(postId) {
+    // 해당 글을 수정하는 로직을 구현합니다.
+    // 수정할 글의 ID(postId)를 이용하여 서버로 요청을 보낼 수 있습니다.
+  }
+
+  // 글 삭제 기능 예시
+  function deletePost(postId) {
+    // 해당 글을 삭제하는 로직을 구현합니다.
+    // 삭제할 글의 ID(postId)를 이용하여 서버로 요청을 보낼 수 있습니다.
+  }
+
+  // 글 검색 기능 예시
+  function searchPosts() {
+    var searchType = document.getElementById("search-type").value;
+    var searchInput = document.getElementById("search-input").value;
+
+    // 선택된 검색 유형(searchType)과 검색어(searchInput)를 이용하여
+    // 글을 검색하는 로직을 구현합니다.
+    // 서버로 요청을 보내거나, 클라이언트 내에서 필터링을 수행할 수 있습니다. 
+ // 예시로 콘솔에 검색 유형과 검색어를 출력합니다.
+    console.log("검색 유형:", searchType);
+    console.log("검색어:", searchInput);
+  }
+  </script>
+  
+  <script>
+//현재 페이지 번호와 총 페이지 개수
+  var currentPage = 1;
+  var totalPages = 5;  // 총 페이지 개수를 알맞게 변경해주세요
+
+  // 다음 페이지로 이동하는 함수
+  function nextPage() {
+    if (currentPage < totalPages) {
+      currentPage++;
+      // 페이지를 이동하는 로직을 추가하세요
+      // 예를 들어, 서버로 해당 페이지의 데이터를 요청하거나, 클라이언트 측에서 데이터를 필터링하여 표시할 수 있습니다.
+      console.log("다음 페이지로 이동:", currentPage);
+    }
+  }
+
+  // 이전 페이지로 이동하는 함수
+  function previousPage() {
+    if (currentPage > 1) {
+      currentPage--;
+      // 페이지를 이동하는 로직을 추가하세요
+      console.log("이전 페이지로 이동:", currentPage);
+     
+    }
+  }
+
+</script>
+<script>
+//자유게시판 이동
+  function redirectToBoard() {
+    var categorySelect = document.getElementById("category-select");
+    var selectedOption = categorySelect.options[categorySelect.selectedIndex].value;
+
+    if (selectedOption === "free") {
+      window.location.href = "Board_list.html";
+    }
+  }
+</script>
+
+
+          <script src="Logout.js"></script>
+</body>
+</html>
