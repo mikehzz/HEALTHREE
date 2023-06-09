@@ -31,12 +31,88 @@ public class MealDaoImpl implements MealDao {
 		// 수동으로 DI
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-	
+
+	// 자주 먹은 식사 조회
+	public List<MealVO> getFrequentMeal(MealVO meal, FoodVO food) throws ClassNotFoundException, SQLException {
+
+		List<MealVO> outList = new ArrayList<>();
+
+		StringBuilder sb = new StringBuilder(300);
+		sb.append(" SELECT    						  	\n ");
+		sb.append(" f_name   						  	\n ");
+		sb.append(" from    						  	\n ");
+		sb.append("  	meal t1   					  	\n ");
+		sb.append("  JOIN food t2                     	\n ");
+		sb.append("  	ON t1.f_code = t2.f_code      	\n ");
+		sb.append("  WHERE                            	\n ");
+		sb.append("  	t1.m_id = ?			      	    \n ");
+		sb.append("  GROUP BY t1.f_code, t2.f_name    	\n ");
+		sb.append("  ORDER BY COUNT(*) DESC, f_name   	\n ");
+		sb.append("  FETCH FIRST 10 ROWS ONLY		  	\n ");
+
+		LOG.debug("1. sql = \n" + sb.toString());
+		LOG.debug("2. param = " + meal);
+
+		// param
+		Object[] args = { meal.getId() };
+
+		outList = this.jdbcTemplate.query(sb.toString(), new RowMapper<MealVO>() {
+			@Override
+			public MealVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+				MealVO out = new MealVO();
+
+				out.setDiv(rs.getString("f_name"));
+				return out;
+			}
+		}, args);
+		LOG.debug("3.outVO:" + outList);
+
+		return outList;
+
+	} // getFrequentMeal()
+
+	// 최근 먹은 식사 조회
+	@Override
+	public List<MealVO> getRecentMeal(MealVO meal) throws ClassNotFoundException, SQLException {
+		List<MealVO> outList = new ArrayList<>();
+
+		StringBuilder sb = new StringBuilder(200);
+		sb.append(" SELECT f_name                  \n ");
+		sb.append(" FROM (                         \n ");
+		sb.append("   SELECT *                     \n ");
+		sb.append("   FROM meal t1, food t2        \n ");
+		sb.append("   WHERE t1.f_code = t2.f_code  \n ");
+		sb.append("   AND m_id = ?                 \n ");
+		sb.append("   ORDER BY m_date DESC         \n ");
+		sb.append(" )                              \n ");
+		sb.append(" WHERE ROWNUM <= 10             \n ");
+
+		LOG.debug("1. sql=\n" + sb.toString());
+		LOG.debug("2. param=" + meal);
+
+		// param
+		Object[] args = { meal.getId() };
+
+		outList = this.jdbcTemplate.query(sb.toString(), new RowMapper<MealVO>() {
+			@Override
+			public MealVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+				MealVO out = new MealVO();
+
+				out.setDiv(rs.getString("f_name"));
+				return out;
+			}
+		}, args);
+		LOG.debug("3.outVO:" + outList);
+
+		return outList;
+
+	}
+
 	// 회원ID, 날짜까지 선택 후 식단 조회
 	@Override
 	public List<MealVO> getDivSeqFoodCode(MealVO meal) throws ClassNotFoundException, SQLException {
 		List<MealVO> outList = new ArrayList<>();
-		
+
 		StringBuilder sb = new StringBuilder(200);
 		sb.append(" SELECT             \n");
 		sb.append("     m_id,          \n");
@@ -54,13 +130,13 @@ public class MealDaoImpl implements MealDao {
 		LOG.debug("2. param=" + meal);
 
 		// param
-		Object[] args = { meal.getId(), meal.getDate()};
+		Object[] args = { meal.getId(), meal.getDate() };
 		outList = this.jdbcTemplate.query(sb.toString(), new RowMapper<MealVO>() {
 
 			@Override
 			public MealVO mapRow(ResultSet rs, int rowNum) throws SQLException {
 				MealVO out = new MealVO();
-				
+
 				out.setId(rs.getString("m_id"));
 				out.setDate(rs.getString("m_date"));
 				out.setDiv(rs.getString("m_div"));
@@ -73,7 +149,7 @@ public class MealDaoImpl implements MealDao {
 		}, args);
 
 		LOG.debug("3.outVO:" + outList);
-		
+
 		return outList;
 	}
 

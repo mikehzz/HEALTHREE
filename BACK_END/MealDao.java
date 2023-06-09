@@ -4,7 +4,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface MealDao {
-
+	
+	// 자주 먹은 식사 조회
+	List<MealVO> getFrequentMeal(MealVO meal, FoodVO food) throws ClassNotFoundException, SQLException;
+	
+	// 최근 먹은 식사 조회
+	List<MealVO> getRecentMeal(MealVO meal) throws ClassNotFoundException, SQLException;
+	
 	// 회원ID, 날짜까지 선택 후 조회
 	List<MealVO> getDivSeqFoodCode(MealVO meal) throws ClassNotFoundException, SQLException;
 
