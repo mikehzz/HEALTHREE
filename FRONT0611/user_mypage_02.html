@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="SSR">
+  <link rel="stylesheet" href="top2.css">
+  <title>회원정보 수정</title>
+  <style>
+
+    h2 {
+      
+      color: #333;
+      text-align: center;
+            font-size: 35px;
+      font-weight: 800;
+      font-family: 'NanumSquareNeoHeavy';
+    }
+    
+    form {
+      background-color: #f8f8f8;
+      border-radius: 5px;
+      padding: 30px;
+      width: 50%;
+		  margin: 0 auto;
+		  margin-top: 50px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+      font-family: 'NanumSquareNeoExtraBold';
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+    
+    .radio-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .radio-group label {
+      margin-right: 20px;
+    }
+    
+    input[type="submit"],
+    input[type="button"] {
+      background-color: #88C6FC;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: 'NanumSquareNeoExtraBold';
+      transition: background-color 0.3s ease;
+    }
+    
+    input[type="submit"]:hover,
+    input[type="button"]:hover {
+      background-color: #c9f06f;
+
+    }
+    
+    .cancel-button {
+      background-color: #ccc;
+      margin-right: 10px;
+    }
+    
+    .cancel-button:hover {
+      background-color: #999;
+    }
+    
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    html, body {
+    height: 100%;
+    }
+
+    .site-footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .site-footer .container {
+      max-width: 960px;
+      margin: 0 auto;
+     }
+  </style>
+</head>
+<body>
+    <header>
+      <nav>
+       <ul class="top">
+          <li class="top_menu"><a href="Home.html" class="top_name">홈</a></li>
+          <li class="top_menu"><a href="Calendar.html" class="top_name">다이어리</a></li>
+          <li class="top_menu"><a href="Report.html" class="top_name">리포트</a></li>
+          <li class="top_menu"><a href="post.html" class="top_name">커뮤니티</a></li>
+          <li class="top_menu"><a href="user_mypage_01.html" class="top_name">마이 페이지</a></li>
+          <li class="top_menu"><a href="QnA.html" class="top_name">문의하기</a></li>
+          <li class="top_menu"><a href="notice.html" class="top_name">공지사항</a></li>
+          <li class="top_menu" style="margin-left: auto;"><a class="top_name" id="logoutBtn">로그아웃</a></li>
+        </ul>
+      </nav> 
+    </header> 
+  <h2>회원정보 수정</h2>
+  <form action="/register" method="post">
+    <label for="password">비밀번호:</label>
+    <input type="password" id="password" name="password" required>
+    <label for="confirm_password">비밀번호 확인:</label>
+    <input type="password" id="confirm_password" name="confirm_password" required>
+    <div class="radio-group">
+      <label>성별:</label>
+      <input type="radio" id="male" name="gender" value="male" required>
+      <label for="male">남성</label>
+      <input type="radio" id="female" name="gender" value="female" required>
+      <label for="female">여성</label>
+    </div>
+    <label for="birthdate">생년월일:</label>
+    <input type="date" id="birthdate" name="birthdate" required>
+    <label for="height">키 (cm):</label>
+    <input type="number" id="height" name="height" required>
+    <label for="weight">체중 (kg):</label>
+    <input type="number" id="weight" name="weight" required>
+    <label for="weight">목표 체중 (kg):</label>
+    <input type="number" id="weight" name="weight" required>
+    <label for="activity_level">활동 레벨:</label>
+    <select id="activity_level" name="activity_level" required>
+      <option value="low">낮음</option>
+      <option value="moderate">보통</option>
+      <option value="high">높음</option>
+      <option value="very_high">매우높음</option>
+    </select>
+    <div class="radio-group">
+      <label>다이어트 목표:</label>
+      <input type="radio" id="diet_loss" name="diet_goal" value="loss" required>
+      <label for="diet_loss">감량</label>
+      <input type="radio" id="diet_maintenance" name="diet_goal" value="maintenance" required>
+      <label for="diet_maintenance">유지</label>
+      <input type="radio" id="diet_gain" name="diet_goal" value="gain" required>
+      <label for="diet_gain">증량</label>
+    </div>
+    <div class="button-container">
+      <input type="submit" value="확인" onclick="window.open('user_mypage_01.html');">
+      <input type="button" class="cancel-button" value="취소" onclick="window.location.href='user_mypage_01.html'">
+    </div>
+  </form>
+ 
+      <script src="Logout.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="top.css">
+<title>공지사항 작성 페이지</title>
+<style>
+
+  #board_write {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin: 50px auto;
+    max-width: 600px;
+    padding: 100px;
+  }
+  
+  h4 {
+    color: #6699CC;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  #write_area {
+    margin-top: 20px;
+  }
+  
+  #in_title textarea,
+  #in_content textarea {
+    background-color: #E6F7FF;
+    border: 1px solid #B3D9FF;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 20px;
+    resize: none;
+    width: 100%;
+  }
+  
+  .wi_line {
+    border-bottom: 1px solid #B3D9FF;
+    margin: 30px 0;
+  }
+  
+  .bt_se {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  button {
+    background-color: #6699CC;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 10px;
+  }
+  
+  button[type="reset"] {
+    background-color: #99B3CC;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  .file-upload-label {
+    background-color: #6699CC;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 10px;
+  }
+  
+  .file-upload-input {
+    display: none;
+  }
+  
+  .file-upload-input + label {
+    background-color: #6699CC;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 10px;
+  }
+
+</style>
+</head>
+<body>
+    <header>
+      <nav>
+       <ul class="top">
+          <li class="top_menu"><a href="mgr_Home.html" class="top_name">관리자 홈</a></li>
+          <li class="top_menu"><a href="mgr_post.html" class="top_name">커뮤니티 관리</a></li>
+          <li class="top_menu"><a href="mgr_QnA.html" class="top_name">문의하기 관리</a></li>
+          <li class="top_menu"><a href="mgr_notice.html" class="top_name">공지사항 관리</a></li>
+          <li class="top_menu" style="margin-left: auto;"><a class="top_name" id="logoutBtn">로그아웃</a></li>
+        </ul>
+      </nav>
+    </header> 
+  
+  <?php $board_id = $_GET['board_id']; ?>
+  <div id="board_write">
+    <h4>공지사항 작성 페이지</h4>
+    <div id="write_area">
+      <form enctype="multipart/form-data" action="write_ok.php?board_id=<?php echo $board_id; ?>" method="post">
+        <div id="in_title">
+          <textarea name="title" id="utitle" rows="3" cols="50" placeholder="제목" maxlength="80" required></textarea>
+        </div>
+        <div class="wi_line"></div>
+        <div id="in_content">
+          <textarea name="content" id="ucontent" rows="20" cols="100" placeholder="내용" required></textarea>
+        </div>
+        <div class="bt_se">
+          <button type="submit">글 작성</button>        
+          <button type="reset">취소</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+  // 취소 버튼 클릭 시 확인 메시지 표시
+  const cancelButton = document.querySelector('button[type="reset"]');
+  cancelButton.addEventListener('click', function(e) {
+    const confirmation = confirm('작성 중인 내용을 취소하시겠습니까?');
+    if (confirmation) {
+      // 작성 중인 내용을 지우는 로직 추가
+      document.getElementById('utitle').value = '';
+      document.getElementById('ucontent').value = '';
+    } else {
+      e.preventDefault(); // 취소 버튼의 기본 동작인 폼 초기화를 막음
+    }
+  });
+  function showConfirmation() {
+	    alert("공지사항이 작성되었습니다.");
+	    window.location.href = "mgr_Home.html";
+	  }
+  function createPost() {
+	    // 공지사항을 작성하는 로직을 구현합니다.
+	    // 작성이 완료된 후에 showConfirmation() 함수를 호출합니다.
+	    // 예시로 1초 후에 showConfirmation() 함수를 호출하는 코드를 작성하였습니다.
+	    setTimeout(function () {
+	      showConfirmation();
+	    }, 1000);
+	  }
+</script>
+  <script src="Logout.js"></script>
+</body>
+</html>
