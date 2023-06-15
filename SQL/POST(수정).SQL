@@ -10,8 +10,8 @@ CREATE TABLE POST (
 	m_id VARCHAR2(20) NOT NULL, /* 게시글등록자 */
 	p_title VARCHAR2(200 CHAR) NOT NULL, /* 게시글제목 */
 	p_read_cnt NUMBER(6) DEFAULT 0, /* 게시글조회수 */
-	p_div NUMBER(2) NOT NULL, /* 게시글구분 */
-	p_contents CLOB, /* 게시글내용 */
+	p_div NUMBER(2) DEFAULT 20 NOT NULL, /* 게시글구분 */
+	p_contents CLOB NOT NULL, /* 게시글내용 */
 	p_reg_dt DATE DEFAULT SYSDATE NOT NULL, /* 게시글등록일 */
 	p_mod_dt DATE DEFAULT SYSDATE /* 게시글수정일 */
 );
